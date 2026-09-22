@@ -1,0 +1,6 @@
+{
+  "name": "Ishwari Yoga Institute",
+  "description": "Where Ancient Wisdom Meets Modern Living. Dedicated to preserving, studying, and sharing authentic yogic knowledge through teacher training, retreats, and wellness programs.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
