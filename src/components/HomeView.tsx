@@ -440,37 +440,8 @@ export const HomeView: React.FC<HomeViewProps> = ({ setCurrentPage, onNavigateDe
                         {prog.fees}
                       </span>
                     </div>
-
-                    <div className="pt-2">
-                      {isEnrolled ? (
-                        <div className="py-2 px-3 bg-olive-green/10 text-olive-green rounded-lg text-center font-sans text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5">
-                          <CheckCircle2 size={13} />
-                          <span>Active Sadhaka</span>
-                        </div>
-                      ) : (
-                        {/* --- Section 1: Hero Section --- */}
-      <section id="hero-section" className="relative min-h-[85vh] flex items-center bg-[#FAFAF8] py-16 px-4 sm:px-6 lg:px-8 border-b border-biscuit/20">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
-           {!currentStudent ? (
-                <button
-                  id="hero-member-login-btn"
-                  onClick={() => openAuthModal({ mode: 'login' })}
-                  className="px-6 py-3.5 bg-espresso hover:bg-espresso/90 text-primary-white rounded-lg font-sans text-xs tracking-widest uppercase font-semibold flex items-center justify-center gap-2 shadow-sm cursor-pointer transition-colors"
-                >
-                  <User size={14} />
-                  <span>Member Login / Register</span>
-                </button>
-              ) : (
-                <button
-                  id="hero-student-portal-btn"
-                  onClick={() => setCurrentPage('student-portal')}
-                  className="px-6 py-3.5 bg-olive-green text-primary-white hover:bg-olive-green/90 rounded-lg font-sans text-xs tracking-widest uppercase font-semibold flex items-center justify-center gap-2 shadow-sm cursor-pointer transition-colors"
-                >
-                  <GraduationCap size={14} />
-                  <span>Training Enroll</span>
-                </button>
-              )}
-
+                 
+            
                     </div>
                   </div>
                 </div>
@@ -650,7 +621,29 @@ export const HomeView: React.FC<HomeViewProps> = ({ setCurrentPage, onNavigateDe
       </section>
 
       <BotanicalBorder className="mt-16" />
-
+          ) : (
+                        {/* --- Section 1: Hero Section --- */}
+      <section id="hero-section" className="relative min-h-[85vh] flex items-center bg-[#FAFAF8] py-16 px-4 sm:px-6 lg:px-8 border-b border-biscuit/20">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+           {!currentStudent ? (
+                <button
+                  id="hero-member-login-btn"
+                  onClick={() => openAuthModal({ mode: 'login' })}
+                  className="px-6 py-3.5 bg-espresso hover:bg-espresso/90 text-primary-white rounded-lg font-sans text-xs tracking-widest uppercase font-semibold flex items-center justify-center gap-2 shadow-sm cursor-pointer transition-colors"
+                >
+                  <User size={14} />
+                  <span>Member Login / Register</span>
+                </button>
+              ) : (
+                <button
+                  id="hero-student-portal-btn"
+                  onClick={() => setCurrentPage('student-portal')}
+                  className="px-6 py-3.5 bg-olive-green text-primary-white hover:bg-olive-green/90 rounded-lg font-sans text-xs tracking-widest uppercase font-semibold flex items-center justify-center gap-2 shadow-sm cursor-pointer transition-colors"
+                >
+                  <GraduationCap size={14} />
+                  <span>Training Enroll</span>
+                </button>
+              )}
     </div>
   );
 };
