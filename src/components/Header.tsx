@@ -72,17 +72,25 @@ export const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) =
               </div>
             ) : (
               <div className="flex items-center gap-2 pl-2 border-l border-biscuit/30">
-                <button type="button" onClick={() => handleNav('student-portal')} className="flex items-center gap-1.5 font-sans text-xs tracking-[0.12em] uppercase px-3.5 py-1.5 rounded-full bg-olive-green/10 text-olive-green hover:bg-olive-green hover:text-primary-white border border-olive-green/30 cursor-pointer">
-                  <GraduationCap size={14} />
-                  <span>Sadhaka: {currentStudent.name.split(' ')[0]}</span>
-                </button>
-                <button type="button" id="register-course-header-btn" onClick={() => handleNav('programs')} className="hidden xl:flex items-center gap-1 font-sans text-xs tracking-[0.12em] uppercase px-2.5 py-1.5 rounded-full border border-biscuit/50 text-espresso/70 hover:text-olive-green hover:border-olive-green cursor-pointer" title="Register for a new course">
-                  <BookOpen size={13} />
-                  <span>Training Enroll</span>
-                </button>
-                <button type="button" onClick={logoutStudent} className="p-1.5 rounded-full border border-biscuit/30 text-espresso/40 hover:text-red-600 hover:border-red-300 cursor-pointer" title="Sign out">
-                  <LogOut size={13} />
-                </button>
+                 {!currentStudent ? (
+              <button
+                id="hero-member-login-btn"
+                onClick={() => openAuthModal({ mode: 'login' })}
+                className="px-6 py-3.5 bg-espresso hover:bg-espresso/90 text-primary-white rounded-lg font-sans text-xs tracking-widest uppercase font-semibold flex items-center justify-center gap-2 cursor-pointer"
+              >
+                <User size={14} />
+                <span>Member Login / Register</span>
+              </button>
+            ) : (
+              <button
+                id="hero-student-portal-btn"
+                onClick={() => setCurrentPage('student-portal')}
+                className="px-6 py-3.5 bg-olive-green text-primary-white hover:bg-olive-green/90 rounded-lg font-sans text-xs tracking-widest uppercase font-semibold flex items-center justify-center gap-2 cursor-pointer"
+              >
+                <GraduationCap size={14} />
+                <span>Training Enroll</span>
+              </button>
+            )}
               </div>
             )}
 
