@@ -7,11 +7,10 @@ import {
   AlertTriangle, X, GraduationCap 
 } from 'lucide-react';
 import { ImageUploader } from './ImageUploader';
-import { AdminStudentPortalTab } from './AdminStudentPortalTab';
 
 export const AdminView: React.FC = () => {
   const {
-    programs, students, blogs, galleryItems, testimonials, inquiries, studentAccounts,
+    programs, students, blogs, galleryItems, testimonials, inquiries,
     addProgram, updateProgram, deleteProgram,
     addStudent, updateStudent, deleteStudent,
     addGalleryItem, deleteGalleryItem,
@@ -21,7 +20,7 @@ export const AdminView: React.FC = () => {
     exportBackup, importBackup
   } = useYoga();
 
-  const [activeTab, setActiveTab] = useState<'programs' | 'students' | 'portal' | 'blogs' | 'gallery' | 'testimonials' | 'inquiries' | 'backup'>('programs');
+  const [activeTab, setActiveTab] = useState<'programs' | 'students' | 'blogs' | 'gallery' | 'testimonials' | 'inquiries' | 'backup'>('programs');
 
   // Success and error messages state
   const [successMsg, setSuccessMsg] = useState('');
@@ -360,7 +359,6 @@ export const AdminView: React.FC = () => {
           {[
             { id: 'programs', label: 'Manage Programs', icon: <BookOpen size={16} /> },
             { id: 'students', label: 'Certified Students', icon: <Users size={16} /> },
-            { id: 'portal', label: 'Student Accounts & LMS', icon: <GraduationCap size={16} />, badge: studentAccounts.length },
             { id: 'blogs', label: 'Publish Blogs', icon: <BookOpen size={16} /> },
             { id: 'gallery', label: 'Gallery Media', icon: <Image size={16} /> },
             { id: 'testimonials', label: 'Testimonials', icon: <Star size={16} /> },
@@ -387,6 +385,21 @@ export const AdminView: React.FC = () => {
               )}
             </button>
           ))}
+
+          {/* Student registrations, results & certificates are managed in the
+              standalone Firebase-backed portal (shared across devices), not here. */}
+          <a
+            href="/ishwari_institute_portal.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full flex items-center justify-between px-4 py-3 rounded-lg text-xs tracking-wider uppercase font-sans font-semibold transition-all cursor-pointer text-espresso/70 hover:bg-warm-beige/30 border-t border-biscuit/20 mt-2 pt-4"
+          >
+            <div className="flex items-center gap-2">
+              <GraduationCap size={16} />
+              <span>Student Portal &amp; Certificates</span>
+            </div>
+            <span className="text-[10px] opacity-60">Opens portal ↗</span>
+          </a>
         </div>
 
         {/* Content Form Block */}
@@ -854,14 +867,6 @@ export const AdminView: React.FC = () => {
               </div>
 
             </div>
-          )}
-
-          {/* TAB: STUDENT PORTAL & LMS ACCOUNTS */}
-          {activeTab === 'portal' && (
-            <AdminStudentPortalTab 
-              onSuccessMsg={setSuccessMsg} 
-              onErrorMsg={setErrorMsg} 
-            />
           )}
 
           {/* TAB 3: WISDOM BLOGS */}

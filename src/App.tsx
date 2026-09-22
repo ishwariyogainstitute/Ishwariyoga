@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { YogaProvider } from './context/YogaContext';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
@@ -13,27 +13,21 @@ import { BlogsView } from './components/BlogsView';
 import { BlogDetailView } from './components/BlogDetailView';
 import { ContactView } from './components/ContactView';
 import { AdminView } from './components/AdminView';
-import { StudentPortalView } from './components/StudentPortalView';
 import { useYoga } from './context/YogaContext';
-import { StudentAuthModal } from './components/StudentAuthModal';
-import { StudentPaymentModal } from './components/StudentPaymentModal';
 
 // App content wrapper that implements the state router
 const AppContent: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<string>('home');
   const [detailView, setDetailView] = useState<[string, string] | null>(null);
 
-  const {
-    currentStudent,
-    programs,
-    isAuthModalOpen,
-    authModalMode,
-    authModalProgramId,
-    activeEnrollmentProgram,
-    closeAuthModal,
-    startCourseRegistration,
-    closeEnrollmentModal
-  } = useYoga();
+  // Student login, registration, results & certificates all live in the
+  // standalone Firebase-backed portal now. If anything still navigates to
+  // the old in-app student-portal page, send the visitor there instead.
+  useEffect(() => {
+    if (currentPage === 'student-portal' || currentPage === 'student-login') {
+      window.location.href = '/ishwari_institute_portal.html';
+    }
+  }, [currentPage]);
 
   const handleNavigateDetail = (view: [string, string]) => {
     setDetailView(view);
@@ -103,9 +97,6 @@ const AppContent: React.FC = () => {
         );
       case 'contact':
         return <ContactView />;
-      case 'student-portal':
-      case 'student-login':
-        return <StudentPortalView onNavigateDetail={handleNavigateDetail} />;
       case 'admin':
         return <AdminView />;
       default:
@@ -137,40 +128,6 @@ const AppContent: React.FC = () => {
         
         <Footer setCurrentPage={handleSetCurrentPage} />
       </div>
-
-      {/* Global Student & Member Auth Modal */}
-      {isAuthModalOpen && (
-        <StudentAuthModal
-          initialMode={authModalMode}
-          initialProgramId={authModalProgramId || undefined}
-          onClose={closeAuthModal}
-          onSuccess={(chosenProgramId) => {
-            closeAuthModal();
-            const progId = chosenProgramId || authModalProgramId;
-            if (progId) {
-              const p = programs.find(item => item.id === progId);
-              if (p) {
-                startCourseRegistration(p);
-                return;
-              }
-            }
-            handleSetCurrentPage('student-portal');
-          }}
-        />
-      )}
-
-      {/* Global Course Registration, Intake Form & Payment Modal */}
-      {activeEnrollmentProgram && currentStudent && (
-        <StudentPaymentModal
-          program={activeEnrollmentProgram}
-          student={currentStudent}
-          onClose={closeEnrollmentModal}
-          onSuccess={() => {
-            closeEnrollmentModal();
-            handleSetCurrentPage('student-portal');
-          }}
-        />
-      )}
     </div>
   );
 };

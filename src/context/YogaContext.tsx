@@ -472,10 +472,11 @@ export const YogaProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [authModalProgramId, setAuthModalProgramId] = useState<string | null>(null);
   const [activeEnrollmentProgram, setActiveEnrollmentProgram] = useState<Program | null>(null);
 
-  const openAuthModal = (options?: { mode?: 'login' | 'register'; programId?: string }) => {
-    setAuthModalMode(options?.mode || 'login');
-    setAuthModalProgramId(options?.programId || null);
-    setIsAuthModalOpen(true);
+  // Student login, registration, and course enrollment are now handled by the
+  // standalone Firebase-backed portal (shared across devices), not this in-app,
+  // localStorage-only flow. Every entry point redirects there instead.
+  const openAuthModal = (_options?: { mode?: 'login' | 'register'; programId?: string }) => {
+    window.open('/ishwari_institute_portal.html', '_blank', 'noopener');
   };
 
   const closeAuthModal = () => {
@@ -483,14 +484,8 @@ export const YogaProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setAuthModalProgramId(null);
   };
 
-  const startCourseRegistration = (program: Program) => {
-    if (currentStudent) {
-      // Member is logged in: open enrollment modal directly
-      setActiveEnrollmentProgram(program);
-    } else {
-      // Member is not logged in: prompt login/registration preselected for this program
-      openAuthModal({ mode: 'register', programId: program.id });
-    }
+  const startCourseRegistration = (_program: Program) => {
+    window.open('/ishwari_institute_portal.html', '_blank', 'noopener');
   };
 
   const closeEnrollmentModal = () => {
