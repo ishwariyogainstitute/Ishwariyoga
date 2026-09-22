@@ -61,29 +61,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ setCurrentPage, onNavigateDe
         <PeepalLeaf size={140} className="text-biscuit rotate-[25deg]" />
       </div>
 
-      {/* --- Section 1: Hero Section --- */}
-      <section id="hero-section" className="relative min-h-[85vh] flex items-center bg-[#FAFAF8] py-16 px-4 sm:px-6 lg:px-8 border-b border-biscuit/20">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
-           {!currentStudent ? (
-                <button
-                  id="hero-member-login-btn"
-                  onClick={() => openAuthModal({ mode: 'login' })}
-                  className="px-6 py-3.5 bg-espresso hover:bg-espresso/90 text-primary-white rounded-lg font-sans text-xs tracking-widest uppercase font-semibold flex items-center justify-center gap-2 shadow-sm cursor-pointer transition-colors"
-                >
-                  <User size={14} />
-                  <span>Member Login / Register</span>
-                </button>
-              ) : (
-                <button
-                  id="hero-student-portal-btn"
-                  onClick={() => setCurrentPage('student-portal')}
-                  className="px-6 py-3.5 bg-olive-green text-primary-white hover:bg-olive-green/90 rounded-lg font-sans text-xs tracking-widest uppercase font-semibold flex items-center justify-center gap-2 shadow-sm cursor-pointer transition-colors"
-                >
-                  <GraduationCap size={14} />
-                  <span>Training Enroll</span>
-                </button>
-              )}
-
+     
           {/* Hero Content */}
           <div className="lg:col-span-7 space-y-8 text-left">
             <div className="inline-flex items-center gap-2 px-3 py-1 border border-biscuit/40 rounded-full bg-warm-beige/30">
@@ -470,19 +448,29 @@ export const HomeView: React.FC<HomeViewProps> = ({ setCurrentPage, onNavigateDe
                           <span>Active Sadhaka</span>
                         </div>
                       ) : (
-                        <button
-                          type="button"
-                          id={`home-register-course-${prog.id}`}
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            startCourseRegistration(prog);
-                          }}
-                          className="w-full py-2.5 px-3 bg-olive-green hover:bg-olive-green/90 text-primary-white rounded-lg font-sans text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 transition-colors cursor-pointer shadow-xs"
-                        >
-                          <UserPlus size={13} />
-                          <span>Register for Course</span>
-                        </button>
-                      )}
+                        {/* --- Section 1: Hero Section --- */}
+      <section id="hero-section" className="relative min-h-[85vh] flex items-center bg-[#FAFAF8] py-16 px-4 sm:px-6 lg:px-8 border-b border-biscuit/20">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+           {!currentStudent ? (
+                <button
+                  id="hero-member-login-btn"
+                  onClick={() => openAuthModal({ mode: 'login' })}
+                  className="px-6 py-3.5 bg-espresso hover:bg-espresso/90 text-primary-white rounded-lg font-sans text-xs tracking-widest uppercase font-semibold flex items-center justify-center gap-2 shadow-sm cursor-pointer transition-colors"
+                >
+                  <User size={14} />
+                  <span>Member Login / Register</span>
+                </button>
+              ) : (
+                <button
+                  id="hero-student-portal-btn"
+                  onClick={() => setCurrentPage('student-portal')}
+                  className="px-6 py-3.5 bg-olive-green text-primary-white hover:bg-olive-green/90 rounded-lg font-sans text-xs tracking-widest uppercase font-semibold flex items-center justify-center gap-2 shadow-sm cursor-pointer transition-colors"
+                >
+                  <GraduationCap size={14} />
+                  <span>Training Enroll</span>
+                </button>
+              )}
+
                     </div>
                   </div>
                 </div>
