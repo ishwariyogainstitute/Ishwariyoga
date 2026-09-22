@@ -132,25 +132,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ setCurrentPage, onNavigateDe
               </button>
             </div>
 
-            {!currentStudent ? (
-              <button
-                id="hero-member-login-btn"
-                onClick={() => openAuthModal({ mode: 'login' })}
-                className="px-6 py-3.5 bg-espresso hover:bg-espresso/90 text-primary-white rounded-lg font-sans text-xs tracking-widest uppercase font-semibold flex items-center justify-center gap-2 cursor-pointer"
-              >
-                <User size={14} />
-                <span>Member Login / Register</span>
-              </button>
-            ) : (
-              <button
-                id="hero-student-portal-btn"
-                onClick={() => setCurrentPage('student-portal')}
-                className="px-6 py-3.5 bg-olive-green text-primary-white hover:bg-olive-green/90 rounded-lg font-sans text-xs tracking-widest uppercase font-semibold flex items-center justify-center gap-2 cursor-pointer"
-              >
-                <GraduationCap size={14} />
-                <span>Training Enroll</span>
-              </button>
-            )}
+           
           </div>
 
           <div className="lg:col-span-5 relative">
