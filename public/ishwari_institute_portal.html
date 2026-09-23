@@ -875,6 +875,10 @@ async function submitAdminLogin(){
       flash("err", "This account is authenticated but is not authorised as an active administrator. Create users/" + user.uid + " with role: admin in Firestore.");
       return;
     }
+    // Re-fetch all data now that we're authenticated: if Firestore rules
+    // restrict reads to signed-in users, the very first (pre-login) load
+    // would have silently come back empty for those collections.
+    await loadAll();
     state.role = "admin"; state.view = "adminDashboard"; state.adminTab="courses";
     render();
   }catch(e){
@@ -1801,6 +1805,10 @@ async function submitStudentLogin(){
   try{
     const credential = await auth.signInWithEmailAndPassword(email, pass);
     const user = credential.user;
+    // Re-fetch all data now that we're authenticated: if Firestore rules
+    // restrict reads to signed-in users, the very first (pre-login) load
+    // would have silently come back empty for this student's own records.
+    await loadAll();
     let student = state.students.find(s=>s.uid===user.uid);
     if(!student) student = state.students.find(s=>s.email===email);
     if(!student){
