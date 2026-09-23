@@ -36,65 +36,52 @@ export const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) =
   };
 
   return (
-    <header id="iys-header" className="sticky top-0 z-50 bg-[#FAFAF8]/95 backdrop-blur-md border-b border-biscuit/20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-24">
-          <button onClick={() => handleNav('home')} className="flex items-center gap-3 text-left group cursor-pointer focus:outline-none">
-            <LotusFlower size={42} className="text-olive-green group-hover:rotate-12 transition-transform duration-700" />
+    <header id="iys-header" className="sticky top-0 z-50 border-b border-[#b86d4a]/20 bg-[#fffaf4]/90 backdrop-blur-xl">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex h-24 items-center justify-between">
+          <button onClick={() => handleNav('home')} className="group flex cursor-pointer items-center gap-3 text-left focus:outline-none">
+            <div className="flex h-12 w-12 items-center justify-center rounded-full border border-[#b86d4a]/20 bg-[#f5eadb] shadow-sm transition-all duration-300 group-hover:scale-105 group-hover:shadow-md">
+              <LotusFlower size={28} className="text-[#687454]" />
+            </div>
             <div>
-              <span className="block font-cinzel text-xl md:text-2xl font-semibold tracking-[0.12em] text-espresso uppercase leading-tight">Ishwari</span>
-              <span className="block font-sans text-xs tracking-[0.3em] text-biscuit uppercase font-medium">Yoga Institute</span>
+              <span className="block font-["Cormorant_Garamond",serif] text-xl font-semibold uppercase tracking-[0.16em] text-[#50362a] md:text-2xl leading-tight">Ishwari</span>
+              <span className="block font-sans text-[10px] font-medium uppercase tracking-[0.28em] text-[#b86d4a]">Yoga Institute</span>
             </div>
           </button>
 
-          <nav id="desktop-nav" className="hidden lg:flex items-center space-x-7">
+          <nav id="desktop-nav" className="hidden items-center space-x-7 lg:flex">
             {menuItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => handleNav(item.id)}
-                className={`font-sans text-xs tracking-[0.18em] uppercase py-2 transition-all relative group cursor-pointer focus:outline-none ${currentPage === item.id ? 'text-espresso font-semibold' : 'text-espresso/60 hover:text-espresso'}`}
+                className={`group relative cursor-pointer py-2 font-sans text-[11px] uppercase tracking-[0.18em] transition-all ${currentPage === item.id ? 'font-semibold text-[#50362a]' : 'text-[#684f42] hover:text-[#b86d4a]'}`}
               >
                 {item.label}
-                <span className={`absolute bottom-0 left-0 h-[1.5px] bg-olive-green transition-all ${currentPage === item.id ? 'w-full' : 'w-0 group-hover:w-full'}`} />
+                <span className={`absolute bottom-0 left-0 h-[1.5px] bg-[#b86d4a] transition-all ${currentPage === item.id ? 'w-full' : 'w-0 group-hover:w-full'}`} />
               </button>
             ))}
 
             {!currentStudent ? (
-              <div className="flex items-center gap-2 pl-2 border-l border-biscuit/30">
-                <button type="button" onClick={() => openAuthModal({ mode: 'login' })} className="flex items-center gap-1.5 font-sans text-xs tracking-[0.14em] uppercase px-3.5 py-1.5 rounded-full bg-espresso hover:bg-espresso/90 text-primary-white cursor-pointer">
+              <div className="flex items-center gap-2 border-l border-[#b86d4a]/20 pl-2">
+                <button type="button" onClick={() => openAuthModal({ mode: 'login' })} className="flex items-center gap-1.5 rounded-full border border-[#b86d4a]/25 bg-[#f4e4d3] px-3.5 py-2 font-sans text-[10px] uppercase tracking-[0.18em] text-[#50362a] transition-all hover:border-[#b86d4a] hover:bg-[#f2d9c7]">
                   <User size={13} />
                   <span>Member Login</span>
                 </button>
-                <button type="button" onClick={() => handleNav('student-portal')} className="flex items-center gap-1.5 font-sans text-xs tracking-[0.14em] uppercase px-3 py-1.5 rounded-full bg-warm-beige/40 text-espresso/80 hover:bg-olive-green/10 border border-biscuit/40 cursor-pointer">
+                <button type="button" onClick={() => handleNav('student-portal')} className="flex items-center gap-1.5 rounded-full bg-[#687454] px-3 py-2 font-sans text-[10px] uppercase tracking-[0.16em] text-[#fffaf4] transition-all hover:bg-[#5a6a46]">
                   <GraduationCap size={14} />
                   <span>Portal</span>
                 </button>
               </div>
             ) : (
-              <div className="flex items-center gap-2 pl-2 border-l border-biscuit/30">
-                 {!currentStudent ? (
-              <button
-                id="hero-member-login-btn"
-                onClick={() => openAuthModal({ mode: 'login' })}
-                className="px-6 py-3.5 bg-espresso hover:bg-espresso/90 text-primary-white rounded-lg font-sans text-xs tracking-widest uppercase font-semibold flex items-center justify-center gap-2 cursor-pointer"
-              >
-                <User size={14} />
-                <span>Member Login / Register</span>
-              </button>
-            ) : (
-              <button
-                id="hero-student-portal-btn"
-                onClick={() => setCurrentPage('student-portal')}
-                className="px-6 py-3.5 bg-olive-green text-primary-white hover:bg-olive-green/90 rounded-lg font-sans text-xs tracking-widest uppercase font-semibold flex items-center justify-center gap-2 cursor-pointer"
-              >
-                <GraduationCap size={14} />
-                <span>Training Enroll</span>
-              </button>
-            )}
+              <div className="flex items-center gap-2 border-l border-[#b86d4a]/20 pl-2">
+                <button type="button" onClick={() => handleNav('student-portal')} className="flex items-center gap-1.5 rounded-full bg-[#687454] px-3 py-2 font-sans text-[10px] uppercase tracking-[0.16em] text-[#fffaf4] transition-all hover:bg-[#5a6a46]">
+                  <GraduationCap size={14} />
+                  <span>Portal</span>
+                </button>
               </div>
             )}
 
-            <button onClick={() => handleNav('admin')} className="flex items-center gap-1 font-sans text-xs tracking-[0.15em] uppercase px-3 py-1.5 border border-biscuit/40 rounded-full text-espresso/60 hover:text-olive-green hover:border-olive-green cursor-pointer">
+            <button onClick={() => handleNav('admin')} className="flex items-center gap-2 rounded-full border border-[#b86d4a]/25 px-3 py-2 font-sans text-[10px] uppercase tracking-[0.14em] text-[#50362a] transition-all hover:border-[#b86d4a] hover:bg-[#f5eadb]">
               <ShieldCheck size={14} />
               <span>CMS Admin</span>
             </button>
@@ -102,43 +89,62 @@ export const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) =
 
           <div className="flex items-center gap-2 lg:hidden">
             {!currentStudent ? (
-              <button type="button" onClick={() => openAuthModal({ mode: 'login' })} className="px-2.5 py-1 rounded-full bg-espresso text-primary-white font-sans text-[11px] uppercase tracking-wider font-semibold cursor-pointer">Login</button>
+              <button type="button" onClick={() => openAuthModal({ mode: 'login' })} className="rounded-full bg-[#50362a] px-2.5 py-1.5 font-sans text-[10px] uppercase tracking-[0.14em] text-[#fffaf4]">
+                Login
+              </button>
             ) : (
-              <button type="button" onClick={() => handleNav('student-portal')} className="px-2.5 py-1 rounded-full bg-olive-green text-primary-white font-sans text-[11px] uppercase tracking-wider font-semibold flex items-center gap-1 cursor-pointer">
+              <button type="button" onClick={() => handleNav('student-portal')} className="rounded-full bg-[#687454] px-2.5 py-1.5 font-sans text-[10px] uppercase tracking-[0.14em] text-[#fffaf4]">
                 <GraduationCap size={12} />
-                <span>Portal</span>
               </button>
             )}
-            <button onClick={() => handleNav('admin')} className="p-2 rounded-full border border-biscuit/30 text-espresso/60 cursor-pointer" title="Admin CMS"><Key size={16} /></button>
-            <button onClick={() => setIsOpen(!isOpen)} className="p-2 text-espresso hover:text-olive-green cursor-pointer" aria-label="Toggle Menu">{isOpen ? <X size={24} /> : <Menu size={24} />}</button>
+            <button onClick={() => handleNav('admin')} className="rounded-full border border-[#b86d4a]/25 p-2 text-[#50362a]" title="Admin CMS"><Key size={16} /></button>
+            <button onClick={() => setIsOpen(!isOpen)} className="rounded-full p-2 text-[#50362a]" aria-label="Toggle Menu">{isOpen ? <X size={24} /> : <Menu size={24} />}</button>
           </div>
         </div>
       </div>
 
       {isOpen && (
-        <div id="mobile-nav-drawer" className="lg:hidden bg-[#FAFAF8] border-b border-biscuit/20 px-4 pt-2 pb-6 space-y-2 shadow-sm">
+        <div id="mobile-nav-drawer" className="border-b border-[#b86d4a]/20 bg-[#fffaf4] px-4 pb-6 pt-2 shadow-sm lg:hidden">
           {!currentStudent ? (
-            <div className="p-3 bg-warm-beige/30 border border-biscuit/30 rounded-xl space-y-2 mb-3">
-              <span className="text-[10px] font-mono uppercase text-biscuit font-bold block">Member Services & Course Admissions</span>
+            <div className="mb-3 space-y-2 rounded-2xl border border-[#b86d4a]/20 bg-[#f5eadb] p-3">
+              <span className="block font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-[#b86d4a]">Member services</span>
               <div className="grid grid-cols-2 gap-2">
-                <button type="button" onClick={() => { setIsOpen(false); openAuthModal({ mode: 'login' }); }} className="flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg bg-espresso text-primary-white font-sans text-xs uppercase font-semibold cursor-pointer"><LogIn size={13} /><span>Member Login</span></button>
-                <button type="button" onClick={() => { setIsOpen(false); openAuthModal({ mode: 'register' }); }} className="flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg bg-olive-green text-primary-white font-sans text-xs uppercase font-semibold cursor-pointer"><UserPlus size={13} /><span>Register</span></button>
+                <button type="button" onClick={() => { setIsOpen(false); openAuthModal({ mode: 'login' }); }} className="flex items-center justify-center gap-1.5 rounded-xl bg-[#50362a] px-3 py-2 font-sans text-[10px] uppercase tracking-[0.14em] text-[#fffaf4]">
+                  <User size={12} />
+                  <span>Login</span>
+                </button>
+                <button type="button" onClick={() => { setIsOpen(false); openAuthModal({ mode: 'register' }); }} className="flex items-center justify-center gap-1.5 rounded-xl border border-[#b86d4a]/20 bg-[#fffaf4] px-3 py-2 font-sans text-[10px] uppercase tracking-[0.14em] text-[#50362a]">
+                  <UserPlus size={12} />
+                  <span>Join</span>
+                </button>
               </div>
             </div>
           ) : (
-            <div className="p-3 bg-olive-green/10 border border-olive-green/30 rounded-xl space-y-2.5 mb-3">
-              <div className="flex items-center justify-between"><span className="text-xs font-sans font-bold text-espresso">Sadhaka: {currentStudent.name}</span><button type="button" onClick={() => { logoutStudent(); setIsOpen(false); }} className="text-[10px] font-sans text-espresso/60 hover:text-red-600 underline cursor-pointer">Sign Out</button></div>
+            <div className="mb-3 space-y-2.5 rounded-2xl border border-[#687454]/20 bg-[#edf2e6] p-3">
+              <div className="flex items-center justify-between">
+                <span className="font-sans text-xs font-bold text-[#50362a]">Sadhaka: {currentStudent.name}</span>
+                <button type="button" onClick={() => { setIsOpen(false); logoutStudent(); }} className="flex items-center gap-1 rounded-full border border-[#687454]/25 px-2 py-1 font-sans text-[10px] uppercase tracking-[0.14em] text-[#50362a]">
+                  <LogOut size={12} />
+                  <span>Exit</span>
+                </button>
+              </div>
               <div className="grid grid-cols-2 gap-2">
-                <button type="button" onClick={() => handleNav('student-portal')} className="flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg bg-olive-green text-primary-white font-sans text-xs uppercase font-semibold cursor-pointer"><GraduationCap size={13} /><span>My Portal</span></button>
-                <button type="button" onClick={() => handleNav('programs')} className="flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg border border-olive-green/40 text-olive-green font-sans text-xs uppercase font-semibold cursor-pointer"><BookOpen size={13} /><span>Training Enroll</span></button>
+                <button type="button" onClick={() => handleNav('student-portal')} className="rounded-xl bg-[#687454] px-3 py-2 font-sans text-[10px] uppercase tracking-[0.14em] text-[#fffaf4]">Portal</button>
+                <button type="button" onClick={() => handleNav('programs')} className="rounded-xl border border-[#687454]/25 px-3 py-2 font-sans text-[10px] uppercase tracking-[0.14em] text-[#50362a]">Programs</button>
               </div>
             </div>
           )}
 
           {menuItems.map((item) => (
-            <button key={item.id} onClick={() => handleNav(item.id)} className={`block w-full text-left py-2.5 px-4 rounded font-sans text-xs tracking-[0.18em] uppercase cursor-pointer ${currentPage === item.id ? 'bg-warm-beige/50 text-espresso font-semibold border-l-2 border-olive-green' : 'text-espresso/75 hover:bg-warm-beige/30'}`}>{item.label}</button>
+            <button key={item.id} onClick={() => handleNav(item.id)} className={`block w-full rounded-xl px-4 py-3 text-left font-sans text-[10px] uppercase tracking-[0.18em] ${currentPage === item.id ? 'bg-[#f5eadb] text-[#50362a]' : 'text-[#50362a]/80 hover:bg-[#f5eadb]'}`}>
+              {item.label}
+            </button>
           ))}
-          <button onClick={() => handleNav('admin')} className="flex items-center gap-2 w-full text-left py-3 px-4 rounded font-sans text-xs tracking-[0.18em] uppercase text-espresso/75 hover:bg-warm-beige/30 cursor-pointer"><ShieldCheck size={16} /><span>CMS Admin Dashboard</span></button>
+
+          <button onClick={() => handleNav('admin')} className="mt-2 flex w-full items-center gap-2 rounded-xl border border-[#b86d4a]/20 px-4 py-3 font-sans text-[10px] uppercase tracking-[0.18em] text-[#50362a] hover:bg-[#f5eadb]">
+            <ShieldCheck size={14} />
+            <span>CMS Admin</span>
+          </button>
         </div>
       )}
     </header>
