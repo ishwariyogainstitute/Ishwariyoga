@@ -44,7 +44,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) =
               <LotusFlower size={28} className="text-[#687454]" />
             </div>
             <div>
-              <span className="block font-["Cormorant_Garamond",serif] text-xl font-semibold uppercase tracking-[0.16em] text-[#50362a] md:text-2xl leading-tight">Ishwari</span>
+              <span className="block font-serif text-xl font-semibold uppercase tracking-[0.16em] text-[#50362a] md:text-2xl leading-tight">Ishwari</span>
               <span className="block font-sans text-[10px] font-medium uppercase tracking-[0.28em] text-[#b86d4a]">Yoga Institute</span>
             </div>
           </button>
