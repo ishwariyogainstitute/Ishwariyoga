@@ -476,7 +476,7 @@ export const YogaProvider: React.FC<{ children: React.ReactNode }> = ({ children
   // standalone Firebase-backed portal (shared across devices), not this in-app,
   // localStorage-only flow. Every entry point redirects there instead.
   const openAuthModal = (_options?: { mode?: 'login' | 'register'; programId?: string }) => {
-    window.open('/ishwari_institute_portal.html', '_blank', 'noopener');
+    window.open('/portal/', '_blank', 'noopener');
   };
 
   const closeAuthModal = () => {
