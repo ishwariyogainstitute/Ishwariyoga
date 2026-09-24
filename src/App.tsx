@@ -25,7 +25,7 @@ const AppContent: React.FC = () => {
   // the old in-app student-portal page, send the visitor there instead.
   useEffect(() => {
     if (currentPage === 'student-portal' || currentPage === 'student-login') {
-      window.location.href = '/ishwari_institute_portal.html';
+      window.location.href = '/portal/';
     }
   }, [currentPage]);
 
