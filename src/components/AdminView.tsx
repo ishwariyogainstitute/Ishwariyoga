@@ -389,7 +389,7 @@ export const AdminView: React.FC = () => {
           {/* Student registrations, results & certificates are managed in the
               standalone Firebase-backed portal (shared across devices), not here. */}
           <a
-            href="/ishwari_institute_portal.html"
+            href="/portal/"
             target="_blank"
             rel="noopener noreferrer"
             className="w-full flex items-center justify-between px-4 py-3 rounded-lg text-xs tracking-wider uppercase font-sans font-semibold transition-all cursor-pointer text-espresso/70 hover:bg-warm-beige/30 border-t border-biscuit/20 mt-2 pt-4"
