@@ -6,6 +6,7 @@ import AdminStudents from './AdminStudents';
 import AdminEnrollments from './AdminEnrollments';
 import AdminReports from './AdminReports';
 import AdminResults from './AdminResults';
+import AdminReviewResults from './AdminReviewResults';
 import AdminSettings from './AdminSettings';
 import AdminExport from './AdminExport';
 
@@ -28,7 +29,8 @@ export default function AdminShell() {
           <NavBtn to="/admin/students">Registrations</NavBtn>
           <NavBtn to="/admin/enrollments">Enrollments &amp; status</NavBtn>
           <NavBtn to="/admin/reports">Reports</NavBtn>
-          <NavBtn to="/admin/results">Results &amp; certificates</NavBtn>
+          <NavBtn to="/admin/results">Update results &amp; certificates</NavBtn>
+          <NavBtn to="/admin/review-results">Review Results</NavBtn>
           <NavBtn to="/admin/settings">Email settings</NavBtn>
           <NavBtn to="/admin/export">Export data</NavBtn>
         </div>
@@ -41,6 +43,7 @@ export default function AdminShell() {
             <Route path="enrollments" element={<AdminEnrollments />} />
             <Route path="reports" element={<AdminReports />} />
             <Route path="results" element={<AdminResults />} />
+            <Route path="review-results" element={<AdminReviewResults />} />
             <Route path="settings" element={<AdminSettings />} />
             <Route path="export" element={<AdminExport />} />
           </Routes>

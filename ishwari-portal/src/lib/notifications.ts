@@ -93,6 +93,7 @@ export async function exportToExcel(
       'Registration ID': r.enrollmentId,
       'Student Name': st ? st.name : '',
       Course: c ? c.name : '',
+      Level: r.level,
       Score: r.score,
       Grade: r.grade,
       Result: r.pass ? 'Pass' : 'Fail',

@@ -14,8 +14,8 @@ export default function StudentResults() {
 
   const mine = data.enrollments.filter((e) => e.studentId === currentStudent.id);
   const withResults = mine
-    .map((e) => ({ e, r: data.results.find((r) => r.enrollmentId === e.id) }))
-    .filter((x): x is { e: Enrollment; r: Result } => !!x.r);
+    .flatMap((e) => data.results.filter((r) => r.enrollmentId === e.id).map((r) => ({ e, r })))
+    .sort((a, b) => a.r.level.localeCompare(b.r.level));
   const myCertFiles = data.certificates.filter((c) => mine.some((e) => e.id === c.enrollmentId));
 
   return (
@@ -26,12 +26,13 @@ export default function StudentResults() {
       ) : (
         <table>
           <tbody>
-            <tr><th>Course</th><th>Score</th><th>Grade</th><th>Result</th><th></th></tr>
+            <tr><th>Course</th><th>Level</th><th>Score</th><th>Grade</th><th>Result</th><th></th></tr>
             {withResults.map(({ e, r }) => {
               const c = courseById(data.courses, e.courseId);
               return (
-                <tr key={e.id}>
+                <tr key={e.id + r.level}>
                   <td>{c ? c.name : '—'}</td>
+                  <td><span className="badge ongoing">{r.level}</span></td>
                   <td>{r.score}</td>
                   <td>{r.grade || '—'}</td>
                   <td>{r.pass ? <span className="badge ongoing">Pass</span> : <span className="badge completed">Fail</span>}</td>
@@ -94,7 +95,7 @@ export default function StudentResults() {
               <div className="cert-rule" />
               <div className="cert-name">{currentStudent.name}</div>
               <div className="cert-course">
-                has successfully completed
+                has successfully completed {viewing.r.level} of
                 <br />
                 <b>{courseById(data.courses, viewing.e.courseId)?.name || ''}</b>
               </div>

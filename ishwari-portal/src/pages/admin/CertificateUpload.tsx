@@ -5,7 +5,7 @@ import { buildCSV, downloadCSV, parseCSV, readFileAsText } from '../../lib/csv';
 import { parseCertMappingRows, processCertificateUpload, deleteCertificate, type CertMappingRow, type CertUploadSummary } from '../../lib/actions';
 import { studentById } from '../../lib/actions';
 
-const LEVELS = ['L1', 'L2', 'L3', 'L4', 'L5'];
+const LEVELS = ['L1', 'L2', 'L3', 'L4', 'L5', 'L6'];
 
 export default function CertificateUpload({ courseId }: { courseId: string }) {
   const portal = usePortal();
@@ -25,11 +25,11 @@ export default function CertificateUpload({ courseId }: { courseId: string }) {
   function downloadTemplate() {
     const roster = data.enrollments.filter((e) => e.courseId === courseId);
     const course = data.courses.find((x) => x.id === courseId);
-    const header = ['RegistrationID', 'StudentName', 'CertificateType', 'Start Date', 'End date', 'Certificate - L1', 'Certificate - L2', 'Certificate - L3', 'Certificate - L4', 'Certificate -L5'];
+    const header = ['RegistrationID', 'StudentName', 'CertificateType', 'Start Date', 'End date', 'Certificate - L1', 'Certificate - L2', 'Certificate - L3', 'Certificate - L4', 'Certificate - L5', 'Certificate - L6'];
     const rows: (string | number)[][] = [header];
     roster.forEach((e) => {
       const st = studentById(data.students, e.studentId);
-      rows.push([e.id, st ? st.name : '', course ? course.category || course.name : '', course ? course.startDate : '', course ? course.endDate : '', '', '', '', '', '']);
+      rows.push([e.id, st ? st.name : '', course ? course.category || course.name : '', course ? course.startDate : '', course ? course.endDate : '', '', '', '', '', '', '']);
     });
     downloadCSV(`certificates-${course ? course.name.replace(/[^a-z0-9]+/gi, '-') : courseId}.csv`, buildCSV(rows));
   }
@@ -74,7 +74,7 @@ export default function CertificateUpload({ courseId }: { courseId: string }) {
         A student can clear several levels within a course (e.g. L1, L2, L3), each with its own certificate. 1) Download the mapping
         template below. 2) For each level a student has cleared, put a Certificate Type label (e.g. "YCB - Level2") and the exact
         file name you'll select in step 3 under that level's column — <code>Certificate - L1</code> through{' '}
-        <code>Certificate - L5</code>. A student can have several columns filled on one row, or several rows. 3) Select all the
+        <code>Certificate - L6</code>. A student can have several columns filled on one row, or several rows. 3) Select all the
         certificate files at once. 4) Upload the filled mapping CSV, then click Upload.
       </div>
       <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', alignItems: 'center', marginBottom: 10 }}>

@@ -41,17 +41,32 @@ export async function saveCourseEdit(
   return null;
 }
 
-export async function setEnrollmentStatus(portal: Portal, enrollmentId: string, newStatus: Enrollment['status']) {
+export async function setEnrollmentStatus(
+  portal: Portal,
+  enrollmentId: string,
+  newStatus: Enrollment['status'],
+  note?: string
+): Promise<string | null> {
   const e = portal.data.enrollments.find((x) => x.id === enrollmentId);
-  if (!e) return;
+  if (!e) return 'Enrollment not found.';
+  if (newStatus === 'Active' && !(note || '').trim() && !(e.paymentNote || '').trim()) {
+    return 'Enter payment/transaction details for this student before marking them Active.';
+  }
   const updated = portal.data.enrollments.map((x) =>
-    x.id === enrollmentId ? { ...x, status: newStatus, statusUpdatedAt: new Date().toISOString() } : x
+    x.id === enrollmentId
+      ? {
+          ...x,
+          status: newStatus,
+          statusUpdatedAt: new Date().toISOString(),
+          paymentNote: note !== undefined ? note.trim() : x.paymentNote || '',
+        }
+      : x
   );
   await portal.setCollection('enrollments', updated);
   portal.flash('ok', `Status updated to ${newStatus}.`);
   const st = studentById(portal.data.students, e.studentId);
   const c = courseById(portal.data.courses, e.courseId);
-  if (!st || !c) return;
+  if (!st || !c) return null;
   if (newStatus === 'Active') {
     sendEmail(
       portal.data.settings,
@@ -69,32 +84,66 @@ export async function setEnrollmentStatus(portal: Portal, enrollmentId: string, 
       `Hi ${st.name}, we've received your registration for ${c.name} (Registration ID ${e.id}), but payment confirmation is still pending. Please complete your payment so we can activate your enrollment.`
     ).catch(() => {});
   }
+  return null;
 }
 
-export function upsertResultLocal(results: Result[], enrollmentId: string, score: string, grade: string, pass: boolean): Result[] {
-  const existing = results.find((r) => r.enrollmentId === enrollmentId);
+export async function saveEnrollmentNote(portal: Portal, enrollmentId: string, note: string) {
+  const updated = portal.data.enrollments.map((x) => (x.id === enrollmentId ? { ...x, paymentNote: note.trim() } : x));
+  await portal.setCollection('enrollments', updated);
+  portal.flash('ok', 'Payment note saved.');
+}
+
+const LEVEL_RE = /^l?([1-6])$/i;
+
+/** Normalizes free text like "L2", "Level 2", "2" into canonical "L2".
+ *  Returns null if it doesn't resolve to a level 1-6. */
+export function normalizeLevel(raw: string): string | null {
+  const cleaned = raw.trim().toLowerCase().replace(/level/g, '').replace(/[\s-]+/g, '');
+  const m = cleaned.match(LEVEL_RE);
+  return m ? 'L' + m[1] : null;
+}
+
+export function upsertResultLocal(
+  results: Result[],
+  enrollmentId: string,
+  level: string,
+  score: string,
+  grade: string,
+  pass: boolean
+): Result[] {
+  const existing = results.find((r) => r.enrollmentId === enrollmentId && r.level === level);
   if (existing) {
     return results.map((r) =>
-      r.enrollmentId === enrollmentId ? { ...r, score, grade, pass, publishedAt: new Date().toISOString() } : r
+      r.enrollmentId === enrollmentId && r.level === level
+        ? { ...r, score, grade, pass, publishedAt: new Date().toISOString() }
+        : r
     );
   }
   const result: Result = {
     id: nextId('RES', results),
     enrollmentId,
+    level,
     score,
     grade,
     pass,
-    certificateId: 'CERT-' + enrollmentId,
+    certificateId: 'CERT-' + enrollmentId + '-' + level,
     publishedAt: new Date().toISOString(),
   };
   return [...results, result];
 }
 
-export async function publishResult(portal: Portal, enrollmentId: string, score: string, grade: string, pass: boolean): Promise<string | null> {
+export async function publishResult(
+  portal: Portal,
+  enrollmentId: string,
+  level: string,
+  score: string,
+  grade: string,
+  pass: boolean
+): Promise<string | null> {
   if (score === '') return 'Enter a score before publishing.';
-  const updated = upsertResultLocal(portal.data.results, enrollmentId, score, grade, pass);
+  const updated = upsertResultLocal(portal.data.results, enrollmentId, level, score, grade, pass);
   await portal.setCollection('results', updated);
-  portal.flash('ok', 'Result published. The student can now view it.');
+  portal.flash('ok', `${level} result published. The student can now view it.`);
   const e = portal.data.enrollments.find((x) => x.id === enrollmentId);
   const st = e && studentById(portal.data.students, e.studentId);
   const c = e && courseById(portal.data.courses, e.courseId);
@@ -104,7 +153,7 @@ export async function publishResult(portal: Portal, enrollmentId: string, score:
       st.email,
       st.name,
       'Your result is published',
-      `Your result for ${c.name}: Score ${score}${grade ? ', Grade ' + grade : ''} — ${pass ? 'Pass' : 'Fail'}.`
+      `Your ${level} result for ${c.name}: Score ${score}${grade ? ', Grade ' + grade : ''} — ${pass ? 'Pass' : 'Fail'}.`
     ).catch(() => {});
   }
   return null;
@@ -129,8 +178,12 @@ export function processResultsCSVRows(
   const scoreIdx = header.indexOf('score');
   const gradeIdx = header.indexOf('grade');
   const resultIdx = header.indexOf('result');
+  const levelIdx = header.indexOf('level');
   if (idIdx === -1 || scoreIdx === -1) {
     return { outcome: { updated: 0, notFound: [], touched: [], error: 'CSV must include RegistrationID and Score columns.' }, nextResults: existingResults };
+  }
+  if (levelIdx === -1) {
+    return { outcome: { updated: 0, notFound: [], touched: [], error: 'CSV must include a Level column (e.g. L1, L2 ... L6) — each course can have multiple levels.' }, nextResults: existingResults };
   }
   let results = existingResults;
   let updated = 0;
@@ -145,13 +198,18 @@ export function processResultsCSVRows(
       notFound.push(regId);
       continue;
     }
+    const level = normalizeLevel(r[levelIdx] || '');
+    if (!level) {
+      notFound.push(`${regId} (invalid Level "${r[levelIdx] || ''}")`);
+      continue;
+    }
     const score = (r[scoreIdx] || '').trim();
     if (score === '') continue;
     const grade = gradeIdx > -1 ? (r[gradeIdx] || '').trim() : '';
     const passVal = resultIdx > -1 ? (r[resultIdx] || '').trim().toLowerCase() : '';
     const pass = passVal ? passVal.startsWith('p') : Number(score) >= 40;
-    results = upsertResultLocal(results, enrollment.id, score, grade, pass);
-    touched.push(enrollment.id);
+    results = upsertResultLocal(results, enrollment.id, level, score, grade, pass);
+    touched.push(`${enrollment.id}::${level}`);
     updated++;
   }
   return { outcome: { updated, notFound, touched }, nextResults: results };
@@ -159,7 +217,7 @@ export function processResultsCSVRows(
 
 export interface CertMappingRow { regId: string; certType: string; level: string; fileName: string }
 
-const LEVEL_COL_RE = /^certificatel([1-5])$/;
+const LEVEL_COL_RE = /^certificatel([1-6])$/;
 
 /** Normalizes a CSV header like "Certificate - L1" or "Certificate -L5" into
  *  "certificatel1" / "certificatel5" for matching, ignoring spacing/hyphen
@@ -286,6 +344,7 @@ export async function enrollInCourse(portal: Portal, courseId: string) {
     fee,
     status: 'In Review',
     statusUpdatedAt: null,
+    paymentNote: '',
   };
   await portal.setCollection('enrollments', [...portal.data.enrollments, enrollment]);
   portal.flash('ok', `You're enrolled. Registration ID: ${enrollment.id}. Your status is In Review — we'll confirm it shortly.`);

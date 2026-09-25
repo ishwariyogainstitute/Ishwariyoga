@@ -43,7 +43,7 @@ describe('Admin nav routing', () => {
 
     expect(window.location.hash).toBe('#/admin/courses');
 
-    await user.click(screen.getByText('Results & certificates'));
+    await user.click(screen.getByText('Update results & certificates'));
     expect(window.location.hash).toBe('#/admin/results');
 
     await user.click(screen.getByText('Enrollments & status'));

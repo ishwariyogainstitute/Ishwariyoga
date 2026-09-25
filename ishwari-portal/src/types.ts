@@ -41,11 +41,13 @@ export interface Enrollment {
   fee: number;
   status: EnrollmentStatus;
   statusUpdatedAt: string | null;
+  paymentNote: string; // transaction/payment details entered by admin; required before marking Active
 }
 
 export interface Result {
   id: string;
   enrollmentId: string;
+  level: string; // 'L1'..'L6' — a course can have several levels, each with its own result
   score: string;
   grade: string;
   pass: boolean;
