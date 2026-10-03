@@ -65,7 +65,7 @@ export const ContactView: React.FC = () => {
           <div className="space-y-4">
             <div className="flex gap-2 items-center text-olive-green">
               <LotusFlower size={28} />
-              <h2 className="font-cinzel text-xl font-bold text-espresso uppercase tracking-wider">The Gurukul Campus</h2>
+              <h2 className="font-cinzel text-xl font-bold text-espresso uppercase tracking-wider">The Ishwari Yoga Institute Campus</h2>
             </div>
             <p className="font-sans text-xs text-espresso/75 leading-relaxed">
               We look forward to welcoming you to our quiet, sun-dappled space in Erandwane. Visiting hours are by appointment only to preserve the silence of practicing classes.
@@ -147,7 +147,7 @@ export const ContactView: React.FC = () => {
               <CalendarCheck size={40} className="text-olive-green mx-auto" />
               <h3 className="font-cinzel text-base font-bold text-espresso">Inquiry Registered</h3>
               <p className="font-sans text-xs text-espresso/80 leading-relaxed">
-                Thank you for your sincere outreach. We have successfully registered your inquiry in our local gurukul ledger. The founders will evaluate your request and contact you shortly.
+                Thank you for your sincere outreach. We have successfully registered your inquiry. The founders will evaluate your request and contact you shortly.
               </p>
               <button
                 onClick={() => setSubmitted(false)}
