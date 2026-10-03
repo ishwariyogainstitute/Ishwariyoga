@@ -29,9 +29,9 @@ export const AboutView: React.FC = () => {
       {/* Our Roots / Vision Section */}
       <section className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 py-12 items-center">
         <div className="space-y-6">
-          <h2 className="font-cinzel text-2xl font-semibold text-espresso">The Gurukul Vision</h2>
+          <h2 className="font-cinzel text-2xl font-semibold text-espresso">The Ishwari Yoga Institute Vision</h2>
           <p className="font-sans text-sm text-espresso/80 leading-relaxed">
-            Ishwari Yoga Institute was envisioned not as a modern boutique fitness gym, but as a silent sanctuary where the deep, traditional gurukul model meets modern systematic education. We emphasize study (*Svadhyaya*), physical and energetic purity (*Shatkarma*), and therapeutic integration.
+            Ishwari Yoga Institute was envisioned not as a modern boutique fitness gym, but as a silent sanctuary where the deep, traditional yoga model meets modern systematic education. We emphasize study (*Svadhyaya*), physical and energetic purity (*Shatkarma*), and therapeutic integration.
           </p>
           <p className="font-sans text-sm text-espresso/80 leading-relaxed">
             Located in Viman Nagar, Pune, the institute has spent years preserving standard Sanskrit textbooks (like Patanjali Yoga Sutras, Hatha Pradipika, Gheranda Samhita, and Yoga Upanishads), making them practical for corporate professionals, students, and mothers-to-be.
