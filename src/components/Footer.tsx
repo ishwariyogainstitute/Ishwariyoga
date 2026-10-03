@@ -65,7 +65,7 @@ export const Footer: React.FC<FooterProps> = ({ setCurrentPage }) => {
         </div>
 
         <div>
-          <h4 className="mb-6 border-b border-[#b86d4a]/20 pb-2 font-serif text-lg font-semibold uppercase tracking-[0.12em] text-[#50362a]">Gurukul Location</h4>
+          <h4 className="mb-6 border-b border-[#b86d4a]/20 pb-2 font-serif text-lg font-semibold uppercase tracking-[0.12em] text-[#50362a]">Ishwari Yoga Institute Location</h4>
           <div className="h-48 overflow-hidden rounded-[1.25rem] border border-[#b86d4a]/20 bg-[#fffaf4] shadow-sm">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.3387766579365!2d73.91264857601723!3d18.560940568019313" width="100%" height="100%" style={{ border: 0, filter: 'grayscale(0.2) sepia(0.12) contrast(0.96)' }} allowFullScreen={false} loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="Ishwari Yoga Institute Pune Map" />
           </div>
