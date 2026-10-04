@@ -166,6 +166,107 @@ export const YcbView: React.FC = () => {
         </div>
       </section>
 
+      {/* Current Course Offerings — Foundation & Teacher Training Programs */}
+      <section className="max-w-5xl mx-auto py-16 space-y-12 border-t border-biscuit/25">
+        <div className="text-center space-y-2">
+          <div className="flex gap-3 items-center justify-center text-olive-green">
+            <GraduationCap size={26} />
+            <h2 className="font-cinzel text-2xl font-semibold text-espresso">Current Course Offerings</h2>
+          </div>
+          <p className="font-sans text-xs text-espresso/60 max-w-xl mx-auto">
+            Enrolling now — download the full brochure for each program for the detailed curriculum, schedule and fees.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+          {/* IYA Foundation and Yoga Pravesh Course */}
+          <div className="p-8 artistic-card rounded-xl space-y-4 flex flex-col justify-between">
+            <div className="space-y-3">
+              <span className="font-mono text-[9px] bg-warm-beige/50 text-espresso px-2 py-0.5 border border-biscuit/30 rounded font-semibold uppercase tracking-wider">
+                3-Month Program
+              </span>
+              <h3 className="font-cinzel text-lg font-bold text-espresso">IYA Foundation &amp; Yoga Pravesh Course</h3>
+              <p className="font-sans text-xs text-espresso/70 leading-relaxed">
+                A comprehensive 3-month teacher training combining three certifications — Yoga Pravesh (Yoga Vidya Gurukul),
+                Yoga Foundation and CCY Teacher Training (Indian Yoga Association) — plus IYA membership.
+              </p>
+              <ul className="space-y-2 font-sans text-xs text-espresso/85 pt-2 border-t border-biscuit/10">
+                <li className="flex items-start gap-2">
+                  <CheckCircle size={14} className="text-olive-green shrink-0 mt-0.5" />
+                  <span><strong>Dates:</strong> 1st October – 21st December 2026 (Diwali vacation 5–15 Nov)</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle size={14} className="text-olive-green shrink-0 mt-0.5" />
+                  <span><strong>Schedule:</strong> Theory 6–7 AM (Mon/Wed/Fri), Practical 7–8 AM (Mon–Fri)</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle size={14} className="text-olive-green shrink-0 mt-0.5" />
+                  <span><strong>Fee:</strong> ₹34,500 (Diwali offer, flat 25% off ₹46,000)</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle size={14} className="text-olive-green shrink-0 mt-0.5" />
+                  <span>Exams available in Hindi, Marathi and English</span>
+                </li>
+              </ul>
+            </div>
+            <a
+              href="/brochures/iya-foundation-yoga-pravesh.pdf"
+              download
+              className="px-5 py-3 bg-espresso hover:bg-olive-green text-primary-white font-sans text-xs tracking-widest uppercase font-semibold inline-flex items-center justify-center gap-2 transition-all cursor-pointer shadow-sm focus:outline-none rounded"
+            >
+              <Download size={14} />
+              <span>Download Brochure (PDF)</span>
+            </a>
+          </div>
+
+          {/* Yoga Teacher Education Program */}
+          <div className="p-8 border border-olive-green/40 bg-warm-beige/10 rounded-xl shadow-sm space-y-4 flex flex-col justify-between relative">
+            <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-olive-green text-primary-white text-[9px] font-mono tracking-wider uppercase px-3 py-1 rounded-full font-bold shadow-sm">
+              Leads to YCB Level 2
+            </div>
+            <div className="space-y-3 pt-2">
+              <span className="font-mono text-[9px] bg-olive-green/10 text-olive-green px-2 py-0.5 rounded font-bold uppercase tracking-wider border border-olive-green/20">
+                5-Month Program
+              </span>
+              <h3 className="font-cinzel text-lg font-bold text-espresso">Yoga Teacher Education Program</h3>
+              <p className="font-sans text-xs text-espresso/70 leading-relaxed">
+                A complete 5-month journey from beginner to certified yoga teacher, preparing you for four certifications:
+                Yoga Pravesh, Yoga Parichay, YCB Level 1 (Yoga Protocol Instructor) and YCB Level 2 (Yoga Wellness
+                Instructor, 400-hour TTC).
+              </p>
+              <ul className="space-y-2 font-sans text-xs text-espresso/85 pt-2 border-t border-biscuit/10">
+                <li className="flex items-start gap-2">
+                  <CheckCircle size={14} className="text-olive-green shrink-0 mt-0.5" />
+                  <span><strong>Mode:</strong> 100% online live classes, all sessions recorded</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle size={14} className="text-olive-green shrink-0 mt-0.5" />
+                  <span><strong>Schedule:</strong> Practical 6–7 AM (Mon–Fri), Theory 9–10 PM (Tue/Wed/Thu)</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle size={14} className="text-olive-green shrink-0 mt-0.5" />
+                  <span><strong>Fee:</strong> ₹60,000, all-inclusive — payable in 2 instalments</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle size={14} className="text-olive-green shrink-0 mt-0.5" />
+                  <span>Study support and exams in Hindi, Marathi and English</span>
+                </li>
+              </ul>
+            </div>
+            <a
+              href="/brochures/yoga-teacher-education-program.pdf"
+              download
+              className="px-5 py-3 bg-espresso hover:bg-olive-green text-primary-white font-sans text-xs tracking-widest uppercase font-semibold inline-flex items-center justify-center gap-2 transition-all cursor-pointer shadow-sm focus:outline-none rounded"
+            >
+              <Download size={14} />
+              <span>Download Brochure (PDF)</span>
+            </a>
+          </div>
+
+        </div>
+      </section>
+
       {/* Brochure download CTA */}
       <section className="max-w-4xl mx-auto py-12 px-6 rounded-2xl bg-[#F3EBDD]/50 border border-biscuit/40 text-center space-y-6">
         <LotusFlower size={42} className="text-lotus-pink mx-auto animate-pulse" />
