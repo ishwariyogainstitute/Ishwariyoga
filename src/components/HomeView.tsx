@@ -55,10 +55,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ setCurrentPage, onNavigateDe
               <button onClick={() => setCurrentPage('programs')} className="artistic-button-primary flex items-center gap-2 px-7 py-3.5 font-sans text-[11px] font-semibold tracking-[0.16em]"><span>Explore Programs</span><ArrowRight size={14} /></button>
               <button onClick={() => document.getElementById('about-section')?.scrollIntoView({ behavior: 'smooth' })} className="artistic-button-secondary px-6 py-3.5 font-sans text-[11px] font-semibold tracking-[0.16em]">About Our Institute</button>
             </div>
-            <div className="grid max-w-xl grid-cols-3 gap-3 pt-4">
-              {[['Certified', 'YCB'], ['Batch Size', 'Max 15'], ['Location', 'Pune']].map(([label, value]) => <div key={label} className="rounded-2xl border border-biscuit/15 bg-primary-white p-3 shadow-sm"><div className="font-mono text-[9px] uppercase tracking-[0.18em] text-biscuit">{label}</div><div className="mt-1 font-serif text-2xl text-espresso">{value}</div></div>)}
-            </div>
-          </div>
+           </div>
           <div className="relative lg:col-span-5">
             <div className="group relative overflow-hidden rounded-[2rem] border border-biscuit/25 bg-primary-white p-3 shadow-[0_26px_60px_rgba(80,54,42,0.12)]">
               <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=1000&auto=format&fit=crop" alt="Classical Yoga Practice Studio" referrerPolicy="no-referrer" className="relative h-[540px] w-full rounded-[1.5rem] object-cover transition-transform duration-[3000ms] group-hover:scale-105" />
