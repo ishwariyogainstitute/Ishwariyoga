@@ -42,51 +42,7 @@ export const ProgramsView: React.FC<ProgramsViewProps> = ({ onNavigateDetail }) 
         <div className="w-16 h-0.5 bg-biscuit mx-auto" />
       </section>
 
-      {/* Member Admissions Banner */}
-      <section className="max-w-7xl mx-auto mb-8">
-        <div className="p-4 sm:p-5 bg-warm-beige/35 border border-biscuit/40 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-4 shadow-xs">
-          <div className="flex items-center gap-3.5">
-            <div className="p-2.5 rounded-full bg-olive-green/10 text-olive-green shrink-0">
-              <LotusFlower size={24} />
-            </div>
-           
-          </div>
-
-          <div className="flex items-center gap-2.5 shrink-0 w-full sm:w-auto">
-            {!currentStudent ? (
-              <>
-                <button
-                  type="button"
-                  id="programs-member-login-cta"
-                  onClick={() => openAuthModal({ mode: 'login' })}
-                  className="flex-1 sm:flex-initial px-4 py-2 bg-espresso hover:bg-espresso/90 text-primary-white rounded-lg text-xs font-sans font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
-                >
-                  <User size={13} />
-                  <span>Member Login</span>
-                </button>
-                <button
-                  type="button"
-                  id="programs-member-register-cta"
-                  onClick={() => openAuthModal({ mode: 'register' })}
-                  className="flex-1 sm:flex-initial px-4 py-2 bg-olive-green hover:bg-olive-green/90 text-primary-white rounded-lg text-xs font-sans font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
-                >
-                  <UserPlus size={13} />
-                  <span>Register Account</span>
-                </button>
-              </>
-            ) : (
-              <div className="flex items-center gap-2 text-xs font-sans">
-                <span className="text-olive-green font-semibold hidden sm:inline">
-                  {currentStudent.enrolledCourses.length} Courses Enrolled
-                </span>
-                <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-              </div>
-            )}
-          </div>
-        </div>
-      </section>
-
-      {/* Filters & Search Block */}
+          {/* Filters & Search Block */}
       <section className="max-w-7xl mx-auto mb-12 space-y-6">
         <div className="flex flex-col md:flex-row gap-4 justify-between items-center bg-primary-white border border-biscuit/20 p-4 rounded-xl shadow-sm">
           
