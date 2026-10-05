@@ -43,7 +43,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ setCurrentPage, onNavigateDe
           <div className="space-y-8 lg:col-span-7">
             <div className="inline-flex items-center gap-2 rounded-full border border-biscuit/30 bg-warm-beige/30 px-3 py-2">
               <LotusFlower size={18} className="text-olive-green" />
-              <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-espresso/70">Ancient Indian Yoga • Pune</span>
+              <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-espresso/70">Tradition into Practice. 📍Pune, India.</span>
             </div>
             <div className="max-w-2xl space-y-5">
               <h1 className="font-serif text-5xl font-semibold leading-[0.95] tracking-tight text-espresso sm:text-6xl md:text-7xl">
