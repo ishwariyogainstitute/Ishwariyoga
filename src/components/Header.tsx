@@ -81,10 +81,6 @@ export const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) =
               </div>
             )}
 
-            <button onClick={() => handleNav('admin')} className="flex items-center gap-2 rounded-full border border-[#b86d4a]/25 px-3 py-2 font-sans text-[10px] uppercase tracking-[0.14em] text-[#50362a] transition-all hover:border-[#b86d4a] hover:bg-[#f5eadb]">
-              <ShieldCheck size={14} />
-              <span>CMS Admin</span>
-            </button>
           </nav>
 
           <div className="flex items-center gap-2 lg:hidden">
