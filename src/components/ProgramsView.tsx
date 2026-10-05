@@ -49,17 +49,7 @@ export const ProgramsView: React.FC<ProgramsViewProps> = ({ onNavigateDetail }) 
             <div className="p-2.5 rounded-full bg-olive-green/10 text-olive-green shrink-0">
               <LotusFlower size={24} />
             </div>
-            <div>
-              <h3 className="font-cinzel text-sm font-bold text-espresso">
-                Member Admissions & Course Registration
-              </h3>
-              <p className="font-sans text-xs text-espresso/70 mt-0.5">
-                {currentStudent 
-                  ? `Signed in as ${currentStudent.name}. You can instantly register for new courses or access enrolled materials.`
-                  : "Have a member account or looking to enroll? Sign in or register to purchase courses, submit your sadhaka intake, and access live classes."
-                }
-              </p>
-            </div>
+           
           </div>
 
           <div className="flex items-center gap-2.5 shrink-0 w-full sm:w-auto">
