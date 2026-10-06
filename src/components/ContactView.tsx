@@ -46,21 +46,21 @@ export const ContactView: React.FC = () => {
 
       {/* Editorial Header */}
       <section className="max-w-4xl mx-auto pt-16 pb-12 text-center space-y-6">
-        <span className="font-mono text-[10px] tracking-[0.25em] text-biscuit font-bold uppercase">Sarthak Sanvad — Connect With Us</span>
+        <span className="font-mono text-[10px] tracking-[0.25em] text-olive-green font-bold uppercase">Sarthak Sanvad — Connect With Us</span>
         <h1 className="font-cinzel text-4xl md:text-5xl font-semibold text-espresso tracking-tight">
           Contact & Inquiries
         </h1>
         <p className="font-sans text-sm text-espresso/70 max-w-2xl mx-auto">
           Reach out to schedule your physical alignment diagnosis, ask about YCB curriculums, or coordinate custom therapy requirements directly with our founders.
         </p>
-        <div className="w-16 h-0.5 bg-biscuit mx-auto" />
+        <div className="w-16 h-0.5 bg-olive-green mx-auto" />
       </section>
 
       {/* Main Grid: Form & Info */}
       <section className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
         
         {/* Left Column: Info Card */}
-        <div className="lg:col-span-5 space-y-8 bg-primary-white border border-biscuit/30 p-8 rounded-2xl shadow-sm">
+        <div className="lg:col-span-5 space-y-8 bg-primary-white border border-olive-green/30 p-8 rounded-2xl shadow-sm">
           
           <div className="space-y-4">
             <div className="flex gap-2 items-center text-olive-green">
@@ -99,14 +99,14 @@ export const ContactView: React.FC = () => {
           </ul>
 
           {/* Social connections */}
-          <div className="pt-6 border-t border-biscuit/20 space-y-3">
-            <span className="block font-mono text-[9px] uppercase tracking-wider text-biscuit font-bold">Social Sadhana Circles</span>
+          <div className="pt-6 border-t border-olive-green/20 space-y-3">
+            <span className="block font-mono text-[9px] uppercase tracking-wider text-olive-green font-bold">Social Sadhana Circles</span>
             <div className="flex gap-3">
               <a
                 href="https://youtube.com/@ishwariyoga"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 py-2 px-3 border border-biscuit/30 rounded text-center font-mono text-[9px] uppercase tracking-wider text-espresso hover:border-red-500 hover:text-red-600 transition-colors flex items-center justify-center gap-1.5"
+                className="flex-1 py-2 px-3 border border-olive-green/30 rounded text-center font-mono text-[9px] uppercase tracking-wider text-espresso hover:border-red-500 hover:text-red-600 transition-all"
               >
                 <Youtube size={12} />
                 <span>YouTube</span>
@@ -115,7 +115,7 @@ export const ContactView: React.FC = () => {
                 href="https://instagram.com/ishwariyoga"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 py-2 px-3 border border-biscuit/30 rounded text-center font-mono text-[9px] uppercase tracking-wider text-espresso hover:border-pink-500 hover:text-pink-600 transition-colors flex items-center justify-center gap-1.5"
+                className="flex-1 py-2 px-3 border border-olive-green/30 rounded text-center font-mono text-[9px] uppercase tracking-wider text-espresso hover:border-pink-500 hover:text-pink-600 transition-all"
               >
                 <Instagram size={12} />
                 <span>Instagram</span>
@@ -124,7 +124,7 @@ export const ContactView: React.FC = () => {
                 href="https://wa.me/918208368237"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 py-2 px-3 border border-biscuit/30 rounded text-center font-mono text-[9px] uppercase tracking-wider text-espresso hover:border-green-500 hover:text-green-600 transition-colors flex items-center justify-center gap-1.5"
+                className="flex-1 py-2 px-3 border border-olive-green/30 rounded text-center font-mono text-[9px] uppercase tracking-wider text-espresso hover:border-green-500 hover:text-green-600 transition-all"
               >
                 <MessageCircle size={12} />
                 <span>WhatsApp</span>
@@ -135,7 +135,7 @@ export const ContactView: React.FC = () => {
         </div>
 
         {/* Right Column: Interactive Form */}
-        <div className="lg:col-span-7 bg-primary-white border border-biscuit/35 p-8 rounded-2xl shadow-sm space-y-6">
+        <div className="lg:col-span-7 bg-primary-white border border-olive-green/35 p-8 rounded-2xl shadow-sm space-y-6">
           
           <div className="space-y-1">
             <h2 className="font-cinzel text-xl font-bold text-espresso uppercase tracking-wider">Submit An Inquiry</h2>
@@ -166,7 +166,7 @@ export const ContactView: React.FC = () => {
                   required
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full px-4 py-3 border border-biscuit/30 rounded bg-primary-white focus:outline-none focus:border-olive-green"
+                  className="w-full px-4 py-3 border border-olive-green/30 rounded bg-primary-white focus:outline-none focus:border-olive-green focus:ring-1 focus:ring-olive-green/20"
                   placeholder="Enter your full name"
                 />
               </div>
@@ -179,7 +179,7 @@ export const ContactView: React.FC = () => {
                     required
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    className="w-full px-4 py-3 border border-biscuit/30 rounded bg-primary-white focus:outline-none focus:border-olive-green"
+                    className="w-full px-4 py-3 border border-olive-green/30 rounded bg-primary-white focus:outline-none focus:border-olive-green focus:ring-1 focus:ring-olive-green/20"
                     placeholder="e.g. +91 98220 00000"
                   />
                 </div>
@@ -190,7 +190,7 @@ export const ContactView: React.FC = () => {
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full px-4 py-3 border border-biscuit/30 rounded bg-primary-white focus:outline-none focus:border-olive-green"
+                    className="w-full px-4 py-3 border border-olive-green/30 rounded bg-primary-white focus:outline-none focus:border-olive-green focus:ring-1 focus:ring-olive-green/20"
                     placeholder="e.g. seeker@gmail.com"
                   />
                 </div>
@@ -201,7 +201,7 @@ export const ContactView: React.FC = () => {
                 <select
                   value={interestedProgram}
                   onChange={(e) => setInterestedProgram(e.target.value)}
-                  className="w-full px-4 py-3 border border-biscuit/30 rounded bg-primary-white focus:outline-none focus:border-olive-green cursor-pointer"
+                  className="w-full px-4 py-3 border border-olive-green/30 rounded bg-primary-white focus:outline-none focus:border-olive-green focus:ring-1 focus:ring-olive-green/20 cursor-pointer"
                 >
                   <option value="General Inquiry">General Inquiries / Consultation</option>
                   {programs.map(prog => (
@@ -216,14 +216,14 @@ export const ContactView: React.FC = () => {
                   rows={5}
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
-                  className="w-full px-4 py-3 border border-biscuit/30 rounded bg-primary-white focus:outline-none focus:border-olive-green resize-none"
+                  className="w-full px-4 py-3 border border-olive-green/30 rounded bg-primary-white focus:outline-none focus:border-olive-green focus:ring-1 focus:ring-olive-green/20 resize-none"
                   placeholder="Ask a question or explain your requirements (e.g. severe lumbar spondylosis, yoga teacher training, or Maheshwar retreat queries)..."
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full py-4 bg-espresso hover:bg-olive-green text-primary-white font-sans text-[10px] tracking-widest uppercase font-bold flex items-center justify-center gap-2 rounded transition-all cursor-pointer shadow-sm"
+                className="w-full py-4 bg-espresso hover:bg-olive-green text-primary-white font-sans text-[10px] tracking-widest uppercase font-bold flex items-center justify-center gap-2 rounded transition-colors"
               >
                 <span>Submit Inquiry</span>
               </button>
@@ -236,9 +236,9 @@ export const ContactView: React.FC = () => {
       </section>
 
       {/* Embedded Maps Section */}
-      <section className="max-w-6xl mx-auto mt-16 rounded-2xl overflow-hidden border border-biscuit/40 h-[350px] shadow-sm bg-primary-white">
+      <section className="max-w-6xl mx-auto mt-16 rounded-2xl overflow-hidden border border-olive-green/40 h-[350px] shadow-sm bg-primary-white">
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.3387766579365!2d73.91264857601723!3d18.560940568019313!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c147b4e85749%3A0x26c043f11dae6051!2sViman%20Nagar%2C%20Pune%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1721510000000!5m2!1sen!2sin"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.3387766579365!2d73.91264857601723!3d18.560940568019313!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c147b4e857eb%3A0xf47fada32f88cc1c!2sIshwari%20Yoga%20Institute!5e0!3m2!1sen!2sin!4v1726319924662!5m2!1sen!2sin"
           width="100%"
           height="100%"
           style={{ border: 0, filter: 'grayscale(0.4) sepia(0.12) contrast(0.95)' }}
