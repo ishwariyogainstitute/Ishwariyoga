@@ -26,26 +26,67 @@ export const AboutView: React.FC = () => {
         <div className="w-16 h-0.5 bg-biscuit mx-auto" />
       </section>
 
-      {/* Our Roots / Vision Section */}
-      <section className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 py-12 items-center">
-        <div className="space-y-6">
-          <h2 className="font-cinzel text-2xl font-semibold text-espresso">The Ishwari Yoga Institute Vision</h2>
-          <p className="font-sans text-sm text-espresso/80 leading-relaxed">
-            Ishwari Yoga Institute was envisioned not as a modern boutique fitness gym, but as a silent sanctuary where the deep, traditional yoga model meets modern systematic education. We emphasize study (*Svadhyaya*), physical and energetic purity (*Shatkarma*), and therapeutic integration.
-          </p>
-          <p className="font-sans text-sm text-espresso/80 leading-relaxed">
-            Located in Viman Nagar, Pune, the institute has spent years preserving standard Sanskrit textbooks (like Patanjali Yoga Sutras, Hatha Pradipika, Gheranda Samhita, and Yoga Upanishads), making them practical for corporate professionals, students, and mothers-to-be.
-          </p>
+      {/* Our Vision Section */}
+      <section className="max-w-4xl mx-auto py-12 space-y-10">
+        <div className="text-center space-y-2">
+          <h2 className="font-cinzel text-3xl font-semibold text-espresso">Our Vision</h2>
+          <div className="w-12 h-[1px] bg-biscuit mx-auto" />
         </div>
-        <div className="rounded-xl border border-biscuit/40 p-3 bg-primary-white shadow-sm overflow-hidden">
-          <div className="aspect-[4/3] rounded-lg overflow-hidden bg-warm-beige/20">
-            <img 
-              src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=800" 
-              alt="Traditional study setting" 
-              referrerPolicy="no-referrer"
-              className="w-full h-full object-cover filter sepia-[0.12]"
-            />
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+          <div className="space-y-5 font-sans text-sm text-espresso/80 leading-relaxed">
+            <p>
+              We see Yoga as far more than a means to physical wellbeing or mental peace. At its heart lies a profound exploration of the human being — the mind, consciousness, life, and our relationship with the world around us.
+            </p>
+            <p>
+              The Rishis explored these questions through intense observation, concentration, discipline, contemplation, and practice. By refining the mind and turning their attention inward, they sought to understand the deeper principles of life and the universe, and shared their insights as knowledge for generations to come.
+            </p>
+            <p>
+              Today, we live in a world of extraordinary technological advancement. Artificial Intelligence can calculate, remember, create, analyse, and perform tasks that once required tremendous human effort. Yet this makes the cultivation of our own faculties more important, not less.
+            </p>
           </div>
+          <div className="space-y-5">
+            <div className="rounded-xl border border-biscuit/40 p-3 bg-primary-white shadow-sm overflow-hidden">
+              <div className="aspect-[4/3] rounded-lg overflow-hidden bg-warm-beige/20">
+                <img
+                  src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=800"
+                  alt="Traditional study setting"
+                  referrerPolicy="no-referrer"
+                  className="w-full h-full object-cover filter sepia-[0.12]"
+                />
+              </div>
+            </div>
+            <p className="font-sans text-sm text-espresso/80 leading-relaxed">
+              The mind is an instrument. Like any instrument, it needs to be used, trained, refined, and kept sharp.
+            </p>
+          </div>
+        </div>
+
+        <p className="font-sans text-sm text-espresso/80 leading-relaxed max-w-3xl mx-auto">
+          Through Yoga, mantra, meditation, disciplined practice, and the principles of <em>Ahar, Vihar, Achar and Vichar</em>, along with allied practices and fields of learning, we seek to cultivate a mind that is attentive, intelligent, centred, steady, and capable of deep inquiry.
+        </p>
+
+        <div className="rounded-2xl border border-biscuit/20 bg-warm-beige/30 p-8 text-center space-y-3">
+          <p className="font-sans text-sm text-espresso/80 leading-relaxed">
+            At Ishwari Yoga Institute, we want to create spaces where people can continue to ask the fundamental questions:
+          </p>
+          <div className="font-cinzel text-lg text-olive-green space-y-1 pt-2">
+            <p>Who am I?</p>
+            <p>Why am I here?</p>
+            <p>How does this universe work?</p>
+            <p>What are the principles that govern life?</p>
+          </div>
+        </div>
+
+        <p className="font-sans text-sm text-espresso/80 leading-relaxed max-w-3xl mx-auto">
+          Our vision is to bring the depth of this ancient inquiry into contemporary life — not by turning away from the modern world, but by developing the human capacity to engage with it consciously.
+        </p>
+
+        <p className="font-serif text-lg italic text-olive-green text-center">Tradition into Practice.</p>
+
+        <div className="rounded-2xl border border-biscuit/20 bg-warm-beige/30 p-6 max-w-2xl mx-auto text-center">
+          <p className="font-serif text-sm italic text-espresso">“As our machines become more intelligent, the need to cultivate our own intelligence becomes greater.”</p>
+          <span className="mt-2 block font-mono text-[10px] uppercase tracking-[0.18em] text-biscuit">— The Ishwari Yoga Institute</span>
         </div>
       </section>
 
