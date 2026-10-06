@@ -36,16 +36,16 @@ export const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) =
   };
 
   return (
-    <header id="iys-header" className="sticky top-0 z-50 border-b border-[#b86d4a]/20 bg-[#fffaf4]/90 backdrop-blur-xl">
+    <header id="iys-header" className="sticky top-0 z-50 border-b border-[#687454]/20 bg-[#fffaf4]/90 backdrop-blur-xl">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-24 items-center justify-between">
           <button onClick={() => handleNav('home')} className="group flex cursor-pointer items-center gap-3 text-left focus:outline-none">
-            <div className="flex h-12 w-12 items-center justify-center rounded-full border border-[#b86d4a]/20 bg-[#f5eadb] shadow-sm transition-all duration-300 group-hover:scale-105 group-hover:shadow-md">
+            <div className="flex h-12 w-12 items-center justify-center rounded-full border border-[#687454]/20 bg-[#f5eadb] shadow-sm transition-all duration-300 group-hover:scale-105 group-hover:shadow-md">
               <LotusFlower size={28} className="text-[#687454]" />
             </div>
             <div>
               <span className="block font-serif text-xl font-semibold uppercase tracking-[0.16em] text-[#50362a] md:text-2xl leading-tight">Ishwari</span>
-              <span className="block font-sans text-[10px] font-medium uppercase tracking-[0.28em] text-[#b86d4a]">Yoga Institute</span>
+              <span className="block font-sans text-[10px] font-medium uppercase tracking-[0.28em] text-[#687454]">Yoga Institute</span>
             </div>
           </button>
 
@@ -54,16 +54,16 @@ export const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) =
               <button
                 key={item.id}
                 onClick={() => handleNav(item.id)}
-                className={`group relative cursor-pointer py-2 font-sans text-[11px] uppercase tracking-[0.18em] transition-all ${currentPage === item.id ? 'font-semibold text-[#50362a]' : 'text-[#684f42] hover:text-[#b86d4a]'}`}
+                className={`group relative cursor-pointer py-2 font-sans text-[11px] font-bold uppercase tracking-[0.18em] transition-all ${currentPage === item.id ? 'font-bold text-[#50362a]' : 'text-[#684f42] hover:text-[#687454]'}`}
               >
                 {item.label}
-                <span className={`absolute bottom-0 left-0 h-[1.5px] bg-[#b86d4a] transition-all ${currentPage === item.id ? 'w-full' : 'w-0 group-hover:w-full'}`} />
+                <span className={`absolute bottom-0 left-0 h-[1.5px] bg-[#687454] transition-all ${currentPage === item.id ? 'w-full' : 'w-0 group-hover:w-full'}`} />
               </button>
             ))}
 
             {!currentStudent ? (
-              <div className="flex items-center gap-2 border-l border-[#b86d4a]/20 pl-2">
-                <button type="button" onClick={() => openAuthModal({ mode: 'login' })} className="flex items-center gap-1.5 rounded-full border border-[#b86d4a]/25 bg-[#f4e4d3] px-3.5 py-2 font-sans text-[10px] uppercase tracking-[0.18em] text-[#50362a] transition-all hover:border-[#b86d4a] hover:bg-[#f2d9c7]">
+              <div className="flex items-center gap-2 border-l border-[#687454]/20 pl-2">
+                <button type="button" onClick={() => openAuthModal({ mode: 'login' })} className="flex items-center gap-1.5 rounded-full border border-[#687454]/25 bg-[#f4e4d3] px-3.5 py-2 font-sans text-[10px] uppercase tracking-[0.18em] text-[#50362a] transition-all hover:border-[#687454] hover:bg-[#f2d9c7]">
                   <User size={13} />
                   <span>Member Login</span>
                 </button>
@@ -73,7 +73,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) =
                 </button>
               </div>
             ) : (
-              <div className="flex items-center gap-2 border-l border-[#b86d4a]/20 pl-2">
+              <div className="flex items-center gap-2 border-l border-[#687454]/20 pl-2">
                 <button type="button" onClick={() => handleNav('student-portal')} className="flex items-center gap-1.5 rounded-full bg-[#687454] px-3 py-2 font-sans text-[10px] uppercase tracking-[0.16em] text-[#fffaf4] transition-all hover:bg-[#5a6a46]">
                   <GraduationCap size={14} />
                   <span>Portal</span>
@@ -93,23 +93,23 @@ export const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) =
                 <GraduationCap size={12} />
               </button>
             )}
-            <button onClick={() => handleNav('admin')} className="rounded-full border border-[#b86d4a]/25 p-2 text-[#50362a]" title="Admin CMS"><Key size={16} /></button>
+            <button onClick={() => handleNav('admin')} className="rounded-full border border-[#687454]/25 p-2 text-[#50362a]" title="Admin CMS"><Key size={16} /></button>
             <button onClick={() => setIsOpen(!isOpen)} className="rounded-full p-2 text-[#50362a]" aria-label="Toggle Menu">{isOpen ? <X size={24} /> : <Menu size={24} />}</button>
           </div>
         </div>
       </div>
 
       {isOpen && (
-        <div id="mobile-nav-drawer" className="border-b border-[#b86d4a]/20 bg-[#fffaf4] px-4 pb-6 pt-2 shadow-sm lg:hidden">
+        <div id="mobile-nav-drawer" className="border-b border-[#687454]/20 bg-[#fffaf4] px-4 pb-6 pt-2 shadow-sm lg:hidden">
           {!currentStudent ? (
-            <div className="mb-3 space-y-2 rounded-2xl border border-[#b86d4a]/20 bg-[#f5eadb] p-3">
-              <span className="block font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-[#b86d4a]">Member services</span>
+            <div className="mb-3 space-y-2 rounded-2xl border border-[#687454]/20 bg-[#f5eadb] p-3">
+              <span className="block font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-[#687454]">Member services</span>
               <div className="grid grid-cols-2 gap-2">
-                <button type="button" onClick={() => { setIsOpen(false); openAuthModal({ mode: 'login' }); }} className="flex items-center justify-center gap-1.5 rounded-xl bg-[#50362a] px-3 py-2 font-sans text-[10px] uppercase tracking-[0.14em] text-[#fffaf4]">
+                <button type="button" onClick={() => { setIsOpen(false); openAuthModal({ mode: 'login' }); }} className="flex items-center justify-center gap-1.5 rounded-xl bg-[#50362a] px-3 py-2 font-sans text-[10px] uppercase tracking-[0.14em] text-[#fffaf4] transition-all">
                   <User size={12} />
                   <span>Login</span>
                 </button>
-                <button type="button" onClick={() => { setIsOpen(false); openAuthModal({ mode: 'register' }); }} className="flex items-center justify-center gap-1.5 rounded-xl border border-[#b86d4a]/20 bg-[#fffaf4] px-3 py-2 font-sans text-[10px] uppercase tracking-[0.14em] text-[#50362a]">
+                <button type="button" onClick={() => { setIsOpen(false); openAuthModal({ mode: 'register' }); }} className="flex items-center justify-center gap-1.5 rounded-xl border border-[#687454]/25 bg-[#fffaf4] px-3 py-2 font-sans text-[10px] uppercase tracking-[0.14em] text-[#50362a] transition-all hover:bg-[#f5eadb]">
                   <UserPlus size={12} />
                   <span>Join</span>
                 </button>
@@ -119,25 +119,25 @@ export const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) =
             <div className="mb-3 space-y-2.5 rounded-2xl border border-[#687454]/20 bg-[#edf2e6] p-3">
               <div className="flex items-center justify-between">
                 <span className="font-sans text-xs font-bold text-[#50362a]">Sadhaka: {currentStudent.name}</span>
-                <button type="button" onClick={() => { setIsOpen(false); logoutStudent(); }} className="flex items-center gap-1 rounded-full border border-[#687454]/25 px-2 py-1 font-sans text-[10px] uppercase tracking-[0.14em] text-[#50362a]">
+                <button type="button" onClick={() => { setIsOpen(false); logoutStudent(); }} className="flex items-center gap-1 rounded-full border border-[#687454]/25 px-2 py-1 font-sans text-[10px] uppercase tracking-[0.12em] text-[#50362a] transition-all hover:bg-[#f5eadb]">
                   <LogOut size={12} />
                   <span>Exit</span>
                 </button>
               </div>
               <div className="grid grid-cols-2 gap-2">
                 <button type="button" onClick={() => handleNav('student-portal')} className="rounded-xl bg-[#687454] px-3 py-2 font-sans text-[10px] uppercase tracking-[0.14em] text-[#fffaf4]">Portal</button>
-                <button type="button" onClick={() => handleNav('programs')} className="rounded-xl border border-[#687454]/25 px-3 py-2 font-sans text-[10px] uppercase tracking-[0.14em] text-[#50362a]">Programs</button>
+                <button type="button" onClick={() => handleNav('programs')} className="rounded-xl border border-[#687454]/25 px-3 py-2 font-sans text-[10px] uppercase tracking-[0.14em] text-[#50362a]">Teach</button>
               </div>
             </div>
           )}
 
           {menuItems.map((item) => (
-            <button key={item.id} onClick={() => handleNav(item.id)} className={`block w-full rounded-xl px-4 py-3 text-left font-sans text-[10px] uppercase tracking-[0.18em] ${currentPage === item.id ? 'bg-[#f5eadb] text-[#50362a]' : 'text-[#50362a]/80 hover:bg-[#f5eadb]'}`}>
+            <button key={item.id} onClick={() => handleNav(item.id)} className={`block w-full rounded-xl px-4 py-3 text-left font-sans text-[10px] font-bold uppercase tracking-[0.18em] ${currentPage === item.id ? 'bg-[#f5eadb] text-[#50362a]' : 'text-[#684f42] hover:bg-[#f5eadb]/50'}`}>
               {item.label}
             </button>
           ))}
 
-          <button onClick={() => handleNav('admin')} className="mt-2 flex w-full items-center gap-2 rounded-xl border border-[#b86d4a]/20 px-4 py-3 font-sans text-[10px] uppercase tracking-[0.18em] text-[#50362a] hover:bg-[#f5eadb]">
+          <button onClick={() => handleNav('admin')} className="mt-2 flex w-full items-center gap-2 rounded-xl border border-[#687454]/20 px-4 py-3 font-sans text-[10px] uppercase tracking-[0.18em] text-[#50362a] transition-all hover:bg-[#f5eadb]/50">
             <ShieldCheck size={14} />
             <span>CMS Admin</span>
           </button>
