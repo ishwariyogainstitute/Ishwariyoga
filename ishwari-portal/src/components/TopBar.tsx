@@ -8,10 +8,15 @@ export default function TopBar({ showLogout = false }: { showLogout?: boolean })
   const navigate = useNavigate();
   const portal = usePortal();
 
+  const handleLogoClick = () => {
+    // Navigate to main website home page (outside the portal)
+    window.location.href = '/';
+  };
+
   return (
     <div className="topbar">
       <div className="topbar-inner">
-        <div className="brand" onClick={() => navigate('/')}>
+        <div className="brand" onClick={handleLogoClick} style={{ cursor: 'pointer' }}>
           <img src={ishwariLogo} alt="ISHWARI — The Institute for Conscious Living" />
           <div className="brand-divider" />
           <div className="brand-sub">
