@@ -9,8 +9,8 @@ export default function TopBar({ showLogout = false }: { showLogout?: boolean })
   const portal = usePortal();
 
   const handleLogoClick = () => {
-    // Navigate to main website home page (outside the portal)
-    window.location.href = '/';
+    // Navigate to main website home page at the root domain
+    window.location.href = 'https://ishwariyogainstitute.in/';
   };
 
   return (
