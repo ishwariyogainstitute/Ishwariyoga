@@ -65,10 +65,17 @@ export const Footer: React.FC<FooterProps> = ({ setCurrentPage }) => {
         </div>
 
         <div>
-          <h4 className="mb-6 border-b border-[#687454]/20 pb-2 font-serif text-lg font-semibold uppercase tracking-[0.12em] text-[#50362a]">Ishwari Yoga Institute Location</h4>
-          <div className="h-48 overflow-hidden rounded-[1.25rem] border border-[#687454]/20 bg-[#fffaf4] shadow-sm">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.1695946261093!2d73.9175579737217!3d18.566391267775906!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c144489e9d73%3A0xedab0b07bdc59062!2zQlJFQVRIaU5HIFBPaU5Uwq7vuI8gaU5URUdSQVRpVkUgVEhFUkFQWSBDRU5UUkUgfHwg4KS24KSw4KWA4KSw4KSu4KS-4KSm4KWN4KSv4KSCIOCkluCksuClgSDgpKfgpLDgpY3gpK7gpLjgpL7gpKfgpKjgpK7gpY0gfHw!5e0!3m2!1sen!2sin!4v1791359654172!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe> width="100%" height="100%" style={{ border: 0, filter: 'grayscale(20%)' }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
-          </div>
+      <iframe
+    src="https://maps.app.goo.gl/6wTWCyzVrYhJ43s98"
+    width="100%"
+    height="100%"
+    style={{ border: 0, filter: 'grayscale(20%)' }}
+    allowFullScreen
+    loading="lazy"
+    referrerPolicy="strict-origin-when-cross-origin"
+    title="Ishwari Yoga Institute location"
+  />
+</div>
           <p className="mt-3 text-center text-[11px] text-[#5f4a41]">Located in beautiful Viman Nagar near Clover Park.</p>
         </div>
       </div>
