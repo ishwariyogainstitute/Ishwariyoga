@@ -178,6 +178,50 @@ export const YcbView: React.FC = () => {
           </p>
         </div>
 
+         {/* Theory-Focused TTC Batch — featured, image-led card */}
+        <div className="artistic-card rounded-xl overflow-hidden grid grid-cols-1 md:grid-cols-2 gap-0">
+          <div className="bg-warm-beige/20">
+            <img
+              src="/course-images/theory-focused-ttc-batch.jpeg"
+              alt="Theory-Focused TTC Batch — Ishwari Yoga Institute upcoming batch poster"
+              className="w-full h-full object-cover object-top"
+            />
+          </div>
+          <div className="p-8 space-y-4 flex flex-col justify-between">
+            <div className="space-y-3">
+              <span className="font-mono text-[9px] bg-warm-beige/50 text-espresso px-2 py-0.5 border border-biscuit/30 rounded font-semibold uppercase tracking-wider">
+                1.5-Month Program · Upcoming Batch
+              </span>
+              <h3 className="font-cinzel text-lg font-bold text-espresso">Theory-Focused TTC Batch</h3>
+              <p className="font-sans text-xs text-espresso/70 leading-relaxed">
+                For practitioners who already have a personal yoga practice and are well-versed with the physical side of
+                yoga, and now want to explore the deeper theoretical, scientific and philosophical side — alongside
+                practical sessions on teaching methodology.
+              </p>
+              <ul className="space-y-1.5 font-sans text-xs text-espresso/85 pt-2 border-t border-biscuit/10">
+                <li className="flex items-start gap-2"><CheckCircle size={14} className="text-olive-green shrink-0 mt-0.5" /><span>Patanjali Yoga Sutras, Hatha Yoga Pradipika &amp; Gheranda Samhita</span></li>
+                <li className="flex items-start gap-2"><CheckCircle size={14} className="text-olive-green shrink-0 mt-0.5" /><span>Selected portions of the Bhagavad Gita; introduction to Upanishads and Darshanas</span></li>
+                <li className="flex items-start gap-2"><CheckCircle size={14} className="text-olive-green shrink-0 mt-0.5" /><span>Scientific understanding of yogic practices, the mind, stress and disease management</span></li>
+                <li className="flex items-start gap-2"><CheckCircle size={14} className="text-olive-green shrink-0 mt-0.5" /><span>Practical sessions on teaching methodology</span></li>
+              </ul>
+              <ul className="space-y-1.5 font-sans text-xs text-espresso/85 pt-2 border-t border-biscuit/10">
+                <li className="flex items-start gap-2"><CheckCircle size={14} className="text-olive-green shrink-0 mt-0.5" /><span><strong>Duration:</strong> Approximately 1.5 months</span></li>
+                <li className="flex items-start gap-2"><CheckCircle size={14} className="text-olive-green shrink-0 mt-0.5" /><span><strong>Tentative start date:</strong> 1st November</span></li>
+                <li className="flex items-start gap-2"><CheckCircle size={14} className="text-olive-green shrink-0 mt-0.5" /><span><strong>Class timings:</strong> To be decided together with interested participants</span></li>
+              </ul>
+            </div>
+            <a
+              href="https://chat.whatsapp.com/BfPc2MBUZ3I9FwQzMop9SF"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-5 py-3 bg-espresso hover:bg-olive-green text-primary-white font-sans text-xs tracking-widest uppercase font-semibold inline-flex items-center justify-center gap-2 transition-all cursor-pointer shadow-sm focus:outline-none rounded"
+            >
+              <MessageCircle size={14} />
+              <span>Join WhatsApp to Connect</span>
+            </a>
+          </div>
+        </div>
+        
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
 
           {/* IYA Foundation and Yoga Pravesh Course */}
@@ -264,51 +308,7 @@ export const YcbView: React.FC = () => {
             </a>
           </div>
 
-        </div>
-
-        {/* Theory-Focused TTC Batch — featured, image-led card */}
-        <div className="artistic-card rounded-xl overflow-hidden grid grid-cols-1 md:grid-cols-2 gap-0">
-          <div className="bg-warm-beige/20">
-            <img
-              src="/course-images/theory-focused-ttc-batch.jpeg"
-              alt="Theory-Focused TTC Batch — Ishwari Yoga Institute upcoming batch poster"
-              className="w-full h-full object-cover object-top"
-            />
-          </div>
-          <div className="p-8 space-y-4 flex flex-col justify-between">
-            <div className="space-y-3">
-              <span className="font-mono text-[9px] bg-warm-beige/50 text-espresso px-2 py-0.5 border border-biscuit/30 rounded font-semibold uppercase tracking-wider">
-                1.5-Month Program · Upcoming Batch
-              </span>
-              <h3 className="font-cinzel text-lg font-bold text-espresso">Theory-Focused TTC Batch</h3>
-              <p className="font-sans text-xs text-espresso/70 leading-relaxed">
-                For practitioners who already have a personal yoga practice and are well-versed with the physical side of
-                yoga, and now want to explore the deeper theoretical, scientific and philosophical side — alongside
-                practical sessions on teaching methodology.
-              </p>
-              <ul className="space-y-1.5 font-sans text-xs text-espresso/85 pt-2 border-t border-biscuit/10">
-                <li className="flex items-start gap-2"><CheckCircle size={14} className="text-olive-green shrink-0 mt-0.5" /><span>Patanjali Yoga Sutras, Hatha Yoga Pradipika &amp; Gheranda Samhita</span></li>
-                <li className="flex items-start gap-2"><CheckCircle size={14} className="text-olive-green shrink-0 mt-0.5" /><span>Selected portions of the Bhagavad Gita; introduction to Upanishads and Darshanas</span></li>
-                <li className="flex items-start gap-2"><CheckCircle size={14} className="text-olive-green shrink-0 mt-0.5" /><span>Scientific understanding of yogic practices, the mind, stress and disease management</span></li>
-                <li className="flex items-start gap-2"><CheckCircle size={14} className="text-olive-green shrink-0 mt-0.5" /><span>Practical sessions on teaching methodology</span></li>
-              </ul>
-              <ul className="space-y-1.5 font-sans text-xs text-espresso/85 pt-2 border-t border-biscuit/10">
-                <li className="flex items-start gap-2"><CheckCircle size={14} className="text-olive-green shrink-0 mt-0.5" /><span><strong>Duration:</strong> Approximately 1.5 months</span></li>
-                <li className="flex items-start gap-2"><CheckCircle size={14} className="text-olive-green shrink-0 mt-0.5" /><span><strong>Tentative start date:</strong> 1st November</span></li>
-                <li className="flex items-start gap-2"><CheckCircle size={14} className="text-olive-green shrink-0 mt-0.5" /><span><strong>Class timings:</strong> To be decided together with interested participants</span></li>
-              </ul>
-            </div>
-            <a
-              href="https://chat.whatsapp.com/BfPc2MBUZ3I9FwQzMop9SF"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-5 py-3 bg-espresso hover:bg-olive-green text-primary-white font-sans text-xs tracking-widest uppercase font-semibold inline-flex items-center justify-center gap-2 transition-all cursor-pointer shadow-sm focus:outline-none rounded"
-            >
-              <MessageCircle size={14} />
-              <span>Join WhatsApp to Connect</span>
-            </a>
-          </div>
-        </div>
+        </div>       
       </section>
 
       {/* Brochure download CTA */}
