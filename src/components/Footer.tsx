@@ -1,6 +1,6 @@
 import React from 'react';
 import { Mail, Phone, MapPin, Youtube, Instagram, MessageCircle, Heart } from 'lucide-react';
-import { LotusFlower } from './BotanicalAssets';
+import IshwariLogo from './Ishwarilogo.png';
 
 interface FooterProps {
   setCurrentPage: (page: string) => void;
@@ -31,7 +31,7 @@ export const Footer: React.FC<FooterProps> = ({ setCurrentPage }) => {
         <div className="space-y-6">
           <div className="flex items-center gap-3">
             <div className="flex h-12 w-12 items-center justify-center rounded-full border border-[#687454]/20 bg-[#fffaf4] shadow-sm">
-              <LotusFlower size={28} className="text-[#687454]" />
+              <img src={IshwariLogo} alt="Ishwari Yoga Institute" className="h-10 w-10 object-contain" />
             </div>
             <div>
               <h3 className="font-serif text-2xl font-semibold uppercase tracking-[0.12em] text-[#50362a] leading-none">Ishwari</h3>
