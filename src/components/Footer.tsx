@@ -58,7 +58,7 @@ export const Footer: React.FC<FooterProps> = ({ setCurrentPage }) => {
         <div>
           <h4 className="mb-6 border-b border-[#687454]/20 pb-2 font-serif text-lg font-semibold uppercase tracking-[0.12em] text-[#50362a]">Contact Information</h4>
           <ul className="space-y-4 text-sm text-[#5f4a41]">
-            <li className="flex items-start gap-3"><MapPin size={18} className="mt-0.5 shrink-0 text-[#687454]" /><span><strong className="font-semibold text-[#50362a]">Head Office:</strong><br />Viman Nagar, Pune 411014</span></li>
+            <li className="flex items-start gap-3"><MapPin size={18} className="mt-0.5 shrink-0 text-[#687454]" /><span><strong className="font-semibold text-[#50362a]">Head Office:</strong><br />R H No.3, Siddhant Classic A, Robershaw Company Road, Viman Nagar, Pune 411014</span></li>
             <li className="flex items-center gap-3"><Phone size={16} className="shrink-0 text-[#687454]" /><span>+91 8208368237 / +91 9607517375</span></li>
             <li className="flex items-center gap-3"><Mail size={16} className="shrink-0 text-[#687454]" /><a href="mailto:Devikabhide8@gmail.com" className="transition-colors hover:text-[#687454]">Devikabhide8@gmail.com</a></li>
           </ul>
@@ -67,7 +67,7 @@ export const Footer: React.FC<FooterProps> = ({ setCurrentPage }) => {
         <div>
           <h4 className="mb-6 border-b border-[#687454]/20 pb-2 font-serif text-lg font-semibold uppercase tracking-[0.12em] text-[#50362a]">Ishwari Yoga Institute Location</h4>
           <div className="h-48 overflow-hidden rounded-[1.25rem] border border-[#687454]/20 bg-[#fffaf4] shadow-sm">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.3387766579365!2d73.91264857601723!3d18.560940568019313" width="100%" height="100%" style={{ border: 0, filter: 'grayscale(20%)' }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.1695946261093!2d73.9175579737217!3d18.566391267775906!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c144489e9d73%3A0xedab0b07bdc59062!2zQlJFQVRIaU5HIFBPaU5Uwq7vuI8gaU5URUdSQVRpVkUgVEhFUkFQWSBDRU5UUkUgfHwg4KS24KSw4KWA4KSw4KSu4KS-4KSm4KWN4KSv4KSCIOCkluCksuClgSDgpKfgpLDgpY3gpK7gpLjgpL7gpKfgpKjgpK7gpY0gfHw!5e0!3m2!1sen!2sin!4v1791359654172!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe> width="100%" height="100%" style={{ border: 0, filter: 'grayscale(20%)' }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
           </div>
           <p className="mt-3 text-center text-[11px] text-[#5f4a41]">Located in beautiful Viman Nagar near Clover Park.</p>
         </div>
