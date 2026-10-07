@@ -68,7 +68,7 @@ export const Footer: React.FC<FooterProps> = ({ setCurrentPage }) => {
           <h4 className="mb-6 border-b border-[#687454]/20 pb-2 font-serif text-lg font-semibold uppercase tracking-[0.12em] text-[#50362a]">Find Us</h4>
           <div className="h-48 overflow-hidden rounded-[1.25rem] border border-[#687454]/20 bg-white shadow-sm">
             <iframe
-              src="https://www.google.com/maps?q=Ishwari+Yoga+Institute,+Viman+Nagar,+Pune,+Maharashtra&output=embed"
+              src="https://www.google.com/maps?q=Breathingpoint+Integrative+Therapy,+Viman+Nagar,+Pune,+Maharashtra&output=embed"
               width="100%"
               height="100%"
               style={{ border: 0, filter: 'grayscale(20%)' }}
