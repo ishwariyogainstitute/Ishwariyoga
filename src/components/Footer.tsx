@@ -65,17 +65,19 @@ export const Footer: React.FC<FooterProps> = ({ setCurrentPage }) => {
         </div>
 
         <div>
-      <iframe
-    src="https://maps.app.goo.gl/6wTWCyzVrYhJ43s98"
-    width="100%"
-    height="100%"
-    style={{ border: 0, filter: 'grayscale(20%)' }}
-    allowFullScreen
-    loading="lazy"
-    referrerPolicy="strict-origin-when-cross-origin"
-    title="Ishwari Yoga Institute location"
-  />
-</div>
+          <h4 className="mb-6 border-b border-[#687454]/20 pb-2 font-serif text-lg font-semibold uppercase tracking-[0.12em] text-[#50362a]">Find Us</h4>
+          <div className="h-48 overflow-hidden rounded-[1.25rem] border border-[#687454]/20 bg-white shadow-sm">
+            <iframe
+              src="https://www.google.com/maps?q=Ishwari+Yoga+Institute,+Viman+Nagar,+Pune,+Maharashtra&output=embed"
+              width="100%"
+              height="100%"
+              style={{ border: 0, filter: 'grayscale(20%)' }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="strict-origin-when-cross-origin"
+              title="Ishwari Yoga Institute location"
+            />
+          </div>
           <p className="mt-3 text-center text-[11px] text-[#5f4a41]">Located in beautiful Viman Nagar near Clover Park.</p>
         </div>
       </div>
