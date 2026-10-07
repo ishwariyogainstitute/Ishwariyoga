@@ -25,6 +25,9 @@ export default function TopBar({ showLogout = false }: { showLogout?: boolean })
           </div>
         </div>
         <div className="topbar-actions">
+          <button className="btn secondary small" onClick={handleLogoClick}>
+            Home
+          </button>
           {!showLogout && (
             <button className="btn secondary small" onClick={() => navigate('/catalog')}>
               Browse courses
