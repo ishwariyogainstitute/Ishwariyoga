@@ -204,14 +204,23 @@ export const BanyanTree: React.FC<{ className?: string; size?: number }> = ({ cl
   </svg>
 );
 
-export const DevanagariScript: React.FC<{ className?: string }> = ({ className = '' }, size = 60) => (
-  <div className={`${className} select-none pointer-events-none text-[#3F4B32] font-serif text-center italic tracking-widest leading-relaxed`}>
+export const DevanagariScript: React.FC<{ className?: string; size?: number }> = ({
+  className = '',
+  size = 60,
+}) => (
+  <div
+    className={`${className} select-none pointer-events-none text-[#3F4B32] font-serif text-center italic tracking-widest leading-relaxed`}
+    style={{ fontSize: size }}
+  >
     <p className="text-xl md:text-2xl font-cinzel my-2">॥ योगश्चित्तवृत्तिनिरोधः ॥</p>
-    <p className="text-xs font-mono uppercase tracking-[0.25em]">Yoga is the resolution of mental fluctuations</p>
+    <p className="text-xs font-mono uppercase tracking-[0.25em]">
+      Yoga is the resolution of mental fluctuations
+    </p>
     <p className="text-xl md:text-2xl font-cinzel my-4">॥ समत्वं योग उच्यते ॥</p>
-    <p className="text-xs font-mono uppercase tracking-[0.25em]">Sameness of mind is called Yoga</p>
+    <p className="text-xs font-mono uppercase tracking-[0.25em]">
+      Sameness of mind is called Yoga
+    </p>
   </div>
-)
 );
 
 export const BotanicalBorder: React.FC<{ className?: string; position?: 'top' | 'bottom' }> = ({ className = '', position = 'top' }) => (
