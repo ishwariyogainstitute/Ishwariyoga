@@ -67,7 +67,7 @@ export const CertifiedStudentsView: React.FC = () => {
             <div className="relative">
               <input
                 type="text"
-                placeholder="e.g. Priyadarshini Joshi"
+                placeholder="Enter student name or certificate number"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full pl-10 pr-4 py-2.5 bg-primary-white border border-biscuit/30 rounded-lg text-xs text-espresso focus:outline-none focus:border-olive-green"
@@ -165,7 +165,9 @@ export const CertifiedStudentsView: React.FC = () => {
                 ) : (
                   <tr>
                     <td colSpan={6} className="px-6 py-12 text-center text-espresso/50 italic font-serif">
-                      No matching verified certificates found in the registry database.
+                      {students.length === 0
+                        ? 'The certified students registry is being updated. Verified graduates will be listed here shortly.'
+                        : 'No matching verified certificates found in the registry database.'}
                     </td>
                   </tr>
                 )}
