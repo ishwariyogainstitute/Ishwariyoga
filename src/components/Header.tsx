@@ -40,8 +40,8 @@ export const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) =
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-24 items-center justify-between">
           <button onClick={() => handleNav('home')} className="group flex cursor-pointer items-center gap-3 text-left focus:outline-none">
-              <div className="flex h-24 w-24 items-center justify-center rounded-full border border-[#687454]/20 bg-[#f5eadb] shadow-sm transition-all duration-300 group-hover:scale-105 group-hover:shadow-md">
-                <img src={IshwariLogo} alt="Ishwari Yoga Institute" className="h-full w-full object-contain" />
+              <div className="flex h-12 w-12 items-center justify-center transition-transform duration-300 group-hover:scale-105">
+                <img src={IshwariLogo} alt="Ishwari Yoga Institute" className="h-12 w-12 object-contain" />
               </div>
             <div>
               <span className="block font-serif text-xl font-semibold uppercase tracking-[0.16em] text-[#50362a] md:text-2xl leading-tight">Ishwari</span>
