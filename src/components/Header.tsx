@@ -11,7 +11,7 @@ interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const { currentStudent, logoutStudent, openAuthModal } = useYoga();
+  const { currentStudent, utStudent, openAuthModal } = useYoga();
 
   const menuItems = [
     { id: 'home', label: 'Home' },
@@ -40,9 +40,9 @@ export const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) =
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-24 items-center justify-between">
           <button onClick={() => handleNav('home')} className="group flex cursor-pointer items-center gap-3 text-left focus:outline-none">
-            <div className="flex h-12 w-12 items-center justify-center rounded-full border border-[#687454]/20 bg-[#f5eadb] shadow-sm transition-all duration-300 group-hover:scale-105 group-hover:shadow-md">
-              <img src={IshwariLogo} alt="Ishwari Yoga Institute" className="h-10 w-10 object-contain" />
-            </div>
+              <div className="flex h-24 w-24 items-center justify-center rounded-full border border-[#687454]/20 bg-[#f5eadb] shadow-sm transition-all duration-300 group-hover:scale-105 group-hover:shadow-md">
+                <img src={IshwariLogo} alt="Ishwari Yoga Institute" className="h-full w-full object-contain" />
+              </div>
             <div>
               <span className="block font-serif text-xl font-semibold uppercase tracking-[0.16em] text-[#50362a] md:text-2xl leading-tight">Ishwari</span>
               <span className="block font-sans text-[10px] font-medium uppercase tracking-[0.28em] text-[#687454]">Yoga Institute</span>
