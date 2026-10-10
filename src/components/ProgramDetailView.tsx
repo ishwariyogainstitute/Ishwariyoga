@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useYoga } from '../context/YogaContext';
 import { ArrowLeft, Calendar, Clock, Download, ClipboardCheck, BookOpen, Heart, HelpCircle, ChevronLeft, ChevronRight, Maximize2, Minimize2, FileText, UserPlus, CheckCircle2, User } from 'lucide-react';
 import { PeepalLeaf } from './BotanicalAssets';
+import { findPoster } from '../data/programPosters';
 
 interface ProgramDetailViewProps {
   programId: string;
@@ -625,15 +626,28 @@ Email: Devikabhide8@gmail.com | Pune, Maharashtra, India`;
             <div className="w-16 h-0.5 bg-biscuit" />
           </div>
 
-          {/* Hero Banner inside details */}
-          <div className="aspect-[16/9] rounded-xl overflow-hidden border border-biscuit/30 bg-warm-beige/15 shadow-sm relative group">
-            <img
-              src={program.image || 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=1200'}
-              alt={program.name}
-              referrerPolicy="no-referrer"
-              className="w-full h-full object-cover filter sepia-[0.1] contrast-[0.98]"
-            />
-          </div>
+          {/* Hero: program poster shown in full, with its description */}
+          {program.image && (() => {
+            const poster = findPoster(program.image);
+            return (
+              <figure className="space-y-3">
+                <div className="rounded-xl overflow-hidden border border-biscuit/30 bg-warm-beige/15 shadow-sm flex justify-center p-3 sm:p-4">
+                  <img
+                    src={program.image}
+                    alt={poster?.alt ?? program.name}
+                    referrerPolicy="no-referrer"
+                    className="w-full max-w-xl max-h-[85vh] object-contain rounded-lg"
+                  />
+                </div>
+                {poster && (
+                  <figcaption className="font-sans text-xs text-espresso/70 leading-relaxed">
+                    <span className="font-semibold text-espresso">{poster.title}: </span>
+                    {poster.caption}
+                  </figcaption>
+                )}
+              </figure>
+            );
+          })()}
 
           {/* Description */}
           <div className="space-y-4">
@@ -839,21 +853,32 @@ Email: Devikabhide8@gmail.com | Pune, Maharashtra, India`;
             </div>
           )}
 
-          {/* Program Gallery */}
+          {/* Program Highlights (posters / announcements) */}
           {program.gallery && program.gallery.length > 0 && (
             <div className="space-y-4">
-              <h2 className="font-cinzel text-xl font-bold text-espresso">Curriculum Media</h2>
-              <div className="grid grid-cols-2 gap-4">
-                {program.gallery.map((img, i) => (
-                  <div key={i} className="aspect-[16/10] border border-biscuit/20 rounded-lg overflow-hidden bg-warm-beige/20 shadow-xs">
-                    <img
-                      src={img}
-                      alt={`Gallery view ${i}`}
-                      referrerPolicy="no-referrer"
-                      className="w-full h-full object-cover filter sepia-[0.1]"
-                    />
-                  </div>
-                ))}
+              <h2 className="font-cinzel text-xl font-bold text-espresso">Highlights &amp; Announcements</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 items-start">
+                {program.gallery.map((img, i) => {
+                  const poster = findPoster(img);
+                  return (
+                    <figure key={i} className="space-y-2">
+                      <div className="border border-biscuit/20 rounded-lg overflow-hidden bg-warm-beige/20 shadow-xs">
+                        <img
+                          src={img}
+                          alt={poster?.alt ?? `${program.name} - image ${i + 1}`}
+                          referrerPolicy="no-referrer"
+                          className="w-full h-auto"
+                        />
+                      </div>
+                      {poster && (
+                        <figcaption className="font-sans text-xs text-espresso/70 leading-relaxed">
+                          <span className="font-semibold text-espresso">{poster.title}: </span>
+                          {poster.caption}
+                        </figcaption>
+                      )}
+                    </figure>
+                  );
+                })}
               </div>
             </div>
           )}
