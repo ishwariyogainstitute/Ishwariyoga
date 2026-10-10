@@ -286,12 +286,7 @@ Guided by Devika Bhide (YCB Level 4 Yoga Master, YCB Level 7 Yoga Consultant, MA
 ];
 
 const initialStudents: Student[] = [
-  { id: 'stud-1', name: 'Priyadarshini Joshi', certificateNumber: 'IYS-YCB3-2025-042', level: 'YCB Level 3 (Yoga Teacher)', year: '2025', status: 'Active', dateOfPassing: '2025-05-12' },
-  { id: 'stud-2', name: 'Dr. Chinmayee Ranade', certificateNumber: 'IYS-YCB4-2024-011', level: 'YCB Level 4 (Yoga Master)', year: '2024', status: 'Active', dateOfPassing: '2024-11-20' },
-  { id: 'stud-3', name: 'Manasi Sathaye', certificateNumber: 'IYS-YCB1-2025-089', level: 'YCB Level 1 (Protocol Instructor)', year: '2025', status: 'Active', dateOfPassing: '2025-06-02' },
-  { id: 'stud-4', name: 'Nikhil Ghangrekar', certificateNumber: 'IYS-YCB3-2025-053', level: 'YCB Level 3 (Yoga Teacher)', year: '2025', status: 'Active', dateOfPassing: '2025-05-12' },
-  { id: 'stud-5', name: 'Vasudha Pendse', certificateNumber: 'IYS-YCB2-2023-018', level: 'YCB Level 2 (Wellness Educator)', year: '2023', status: 'Completed', dateOfPassing: '2023-08-15' },
-  { id: 'stud-6', name: 'Aniket Deshmukh', certificateNumber: 'IYS-YCB1-2024-067', level: 'YCB Level 1 (Protocol Instructor)', year: '2024', status: 'Completed', dateOfPassing: '2024-04-10' }
+ 
 ];
 
 const initialBlogs: Blog[] = [
