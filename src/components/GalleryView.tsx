@@ -11,14 +11,11 @@ export const GalleryView: React.FC = () => {
   const [lightboxIdx, setLightboxIdx] = useState<number | null>(null);
 
   type GalleryItemCategory = 'Retreats' | 'Teacher Training' | 'Workshops' | 'Classes' | 'Events' | 'Awards';
+  const allCategories: GalleryItemCategory[] = ['Retreats', 'Teacher Training', 'Workshops', 'Classes', 'Events', 'Awards'];
+  // Only show filter tabs that actually have photos
   const categories: ('All' | GalleryItemCategory)[] = [
     'All',
-    'Retreats',
-    'Teacher Training',
-    'Workshops',
-    'Classes',
-    'Events',
-    'Awards'
+    ...allCategories.filter(cat => galleryItems.some(item => item.category === cat))
   ];
 
   const filteredItems = galleryItems.filter(item => {
@@ -105,7 +102,7 @@ export const GalleryView: React.FC = () => {
                     src={item.url}
                     alt={item.caption}
                     referrerPolicy="no-referrer"
-                    className="w-full h-full object-cover filter sepia-[0.1] contrast-[0.98] transition-transform duration-700 group-hover:scale-103"
+                    className="w-full h-full object-cover object-[center_25%] filter sepia-[0.1] contrast-[0.98] transition-transform duration-700 group-hover:scale-103"
                   />
                   <div className="absolute inset-0 bg-espresso/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                     <Maximize2 className="text-primary-white" size={20} />
@@ -117,7 +114,7 @@ export const GalleryView: React.FC = () => {
                   <span className="block font-mono text-[9px] uppercase tracking-wider text-olive-green font-semibold">
                     {item.category}
                   </span>
-                  <p className="font-sans text-[11px] text-espresso/80 font-medium truncate leading-normal">
+                  <p className="font-sans text-[11px] text-espresso/80 font-medium line-clamp-2 leading-normal">
                     {item.caption}
                   </p>
                 </div>
