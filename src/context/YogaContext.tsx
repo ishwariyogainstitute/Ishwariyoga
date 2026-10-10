@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { PROGRAM_POSTERS } from '../data/programPosters';
 import { 
   Program, Student, Blog, GalleryItem, Testimonial, Inquiry, FAQ, ScheduleItem, ProgramTestimonial,
   StudentAccount, RecordedSession, CourseMaterial, ExamResult, CoursePurchase
@@ -105,7 +106,7 @@ const PHOTOS = {
 // the old seed data cached in localStorage get the new images on their next visit
 // (anything added manually is kept).
 const CONTENT_VERSION_KEY = 'iys_content_version';
-const CONTENT_VERSION = '2026-10-real-photos';
+const CONTENT_VERSION = '2026-10-program-posters';
 const contentIsCurrent = (() => {
   try { return localStorage.getItem(CONTENT_VERSION_KEY) === CONTENT_VERSION; } catch { return false; }
 })();
@@ -135,8 +136,8 @@ Includes comprehensive preparation and all registration/examination fees for:
 4. YCB Level 2 – Yoga Wellness Instructor Course (400 hrs TTC)
 
 Guided by Devika Bhide (YCB Level 4 Yoga Master, YCB Level 7 Yoga Consultant, MA in Yogashastra) and Shweta Vaikunthe (YCB Level 4 Yoga Master, YCB Level 7 Yoga Consultant, MA in Yogashastra).`,
-    image: PHOTOS.pragati,
-    gallery: [PHOTOS.team, PHOTOS.yogaTherapistCert, PHOTOS.brigadier],
+    image: PROGRAM_POSTERS.teacherTraining.url,
+    gallery: [PROGRAM_POSTERS.ccyResult.url],
     pdfBrochure: '',
     pdfBrochureName: 'yoga_teacher_education_program_prospectus.pdf',
     registrationLink: '#register',
@@ -165,8 +166,8 @@ Guided by Devika Bhide (YCB Level 4 Yoga Master, YCB Level 7 Yoga Consultant, MA
     duration: '3 Months (Weekend Batches)',
     fees: '₹15,000 / $250',
     description: 'This government-certified course is regulated by the Yoga Certification Board (YCB) under the Ministry of Ayush. It is designed to impart foundational scriptural knowledge, traditional yoga practices, and basic instructional skills, preparing you to lead yoga protocols in schools, community centers, and corporate spaces.',
-    image: PHOTOS.team,
-    gallery: [PHOTOS.inauguration, PHOTOS.setubandha],
+    image: PROGRAM_POSTERS.theoryTtc.url,
+    gallery: [],
     pdfBrochure: '',
     pdfBrochureName: 'ycb_level1_prospectus.pdf',
     registrationLink: '#register',
@@ -196,7 +197,7 @@ Guided by Devika Bhide (YCB Level 4 Yoga Master, YCB Level 7 Yoga Consultant, MA
     fees: '₹32,000 / $490',
     description: 'An advanced, highly prestigious program suited for serious seekers, educators, and experienced practitioners. Gain deep philosophical grounding in Bhagavad Gita, Upanishads, and Samkhya philosophy while mastering the physical sciences of Hatha and Therapeutic Yoga. Certified as a Master Teacher capable of training others.',
     image: PHOTOS.yogRatna1,
-    gallery: [PHOTOS.yogaTherapistCert, PHOTOS.wellnessHero],
+    gallery: [],
     pdfBrochure: '',
     pdfBrochureName: 'ycb_level3_syllabus.pdf',
     registrationLink: '#register',
@@ -222,7 +223,7 @@ Guided by Devika Bhide (YCB Level 4 Yoga Master, YCB Level 7 Yoga Consultant, MA
     fees: '₹18,000 (Inclusive of Sattvik Stay)',
     description: 'Join Devika and Shweta on the serene ghats of the holy Narmada River in Maheshwar. This intensive offline retreat focuses on Swara Sadhana, traditional pranayama, mantra japa, and scriptural contemplation. Unplug from digital chaos and live the simplicity of a classical gurukul.',
     image: PHOTOS.showcasing,
-    gallery: [PHOTOS.gomukhasan],
+    gallery: [],
     pdfBrochure: '',
     pdfBrochureName: 'maheshwar_retreat_itinerary.pdf',
     registrationLink: '#register',
@@ -275,7 +276,7 @@ Guided by Devika Bhide (YCB Level 4 Yoga Master, YCB Level 7 Yoga Consultant, MA
     fees: '₹9,500 / Course',
     description: 'Clinical-grade yoga therapy designed for managing chronic psychosomatic ailments such as hypertension, diabetes, sciatica, lumbar/cervical spondylosis, anxiety, and endocrine imbalances. Led by YCB Level 7 Certified Therapeutic Yoga Instructors, combining clinical understanding with classical hatha interventions.',
     image: PHOTOS.setubandha,
-    gallery: [PHOTOS.yogaTherapistCert],
+    gallery: [],
     pdfBrochure: '',
     pdfBrochureName: 'yoga_therapy_overview.pdf',
     registrationLink: '#register',
@@ -473,7 +474,10 @@ export const YogaProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const parsed = JSON.parse(saved) as GalleryItem[];
     if (contentIsCurrent) return parsed;
     // Drop the old stock/AI seed photos, keep anything that was added manually
-    return [...initialGallery, ...parsed.filter(g => !g.url.includes('images.unsplash.com'))];
+    return [
+      ...initialGallery,
+      ...parsed.filter(g => !g.url.includes('images.unsplash.com') && !initialGallery.some(s => s.id === g.id))
+    ];
   });
 
   const [testimonials, setTestimonials] = useState<Testimonial[]>(() => {
