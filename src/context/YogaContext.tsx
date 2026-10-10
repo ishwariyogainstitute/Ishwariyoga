@@ -110,6 +110,13 @@ const contentIsCurrent = (() => {
   try { return localStorage.getItem(CONTENT_VERSION_KEY) === CONTENT_VERSION; } catch { return false; }
 })();
 
+// Old demo records that earlier versions of the site saved into visitors' browsers.
+// They are stripped from stored data on load so they can never reappear.
+const DEMO_CERTIFICATE_NUMBERS = [
+  'IYS-YCB3-2025-042', 'IYS-YCB4-2024-011', 'IYS-YCB1-2025-089',
+  'IYS-YCB3-2025-053', 'IYS-YCB2-2023-018', 'IYS-YCB1-2024-067'
+];
+
 // Initial Seed Data - Deeply authentic, scholarly content
 const initialPrograms: Program[] = [
   {
@@ -285,9 +292,7 @@ Guided by Devika Bhide (YCB Level 4 Yoga Master, YCB Level 7 Yoga Consultant, MA
   }
 ];
 
-const initialStudents: Student[] = [
- 
-];
+const initialStudents: Student[] = [];
 
 const initialBlogs: Blog[] = [
   {
@@ -445,7 +450,10 @@ export const YogaProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const [students, setStudents] = useState<Student[]>(() => {
     const saved = localStorage.getItem('iys_students');
-    return saved ? JSON.parse(saved) : initialStudents;
+    if (!saved) return initialStudents;
+    return (JSON.parse(saved) as Student[]).filter(
+      s => !DEMO_CERTIFICATE_NUMBERS.includes(s.certificateNumber)
+    );
   });
 
   const [blogs, setBlogs] = useState<Blog[]>(() => {
