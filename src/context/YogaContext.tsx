@@ -80,6 +80,36 @@ interface YogaContextType {
 
 const YogaContext = createContext<YogaContextType | undefined>(undefined);
 
+// Real photographs live in public/images/gallery/ (served from the site root).
+// Keep the file names identical to the uploaded originals.
+const GALLERY_BASE = '/images/gallery/';
+const photo = (file: string) => `${GALLERY_BASE}${file}`;
+const PHOTOS = {
+  pragati: photo('Exercise_Pragati_Umroi_Meghalaya_2026_-_Multi_Military_Exercise_by_Indian_Army.jpeg'),
+  gomukhasan: photo('Gomukhasan.jpeg'),
+  inauguration: photo('Inaugaration_of_Breathing_Point_by_Dr__Vishwas_Mandlik_guruji.jpeg'),
+  armyEastern: photo('Indian_Army_Estern_Command_for_teaching_yoga_to_soldiers_of_13_countries_of_the_Indian_Ocean_Region_.jpeg'),
+  yogaTherapistCert: photo('Presenting_Yoga_therapist_certicate_from_Dr__Vishwas_Mandlik_guruji.jpeg'),
+  yogRatna3: photo('Receiving_Yog_Ratna_award_from_Ministry_of_Ayush.jpeg'),
+  yogRatna1: photo('Receiving_Yog_Ratna_award_from_Ministry_of_Ayush1.jpeg'),
+  yogRatna2: photo('Receiving_Yog_Ratna_award_from_Ministry_of_Ayush2.jpeg'),
+  setubandha: photo('Sethubadhasan.jpeg'),
+  showcasing: photo('Showcasing_yoga_practices.jpeg'),
+  team: photo('Team_BreathingPoint_with_Dr_Vishwas_Mandlik_guruji.jpeg'),
+  wellnessHero: photo('Welness_Hero_Award_by_Pune_Times_Mirror.jpeg'),
+  brigadier: photo('With_Brigadier_Mayur_Shekatkar_sir_-_Indian_Army_Estern_Command_for_teaching_yoga_to_soldiers_of_13_countries_of_the_Indian_Ocean_Region_.jpeg'),
+  unionMinister: photo('With_Union_Ayush_Minister_Shri_Pratap_Rao_Jadhav__1_.jpeg'),
+};
+
+// Bump CONTENT_VERSION whenever the seed images change. Visitors who already have
+// the old seed data cached in localStorage get the new images on their next visit
+// (anything added manually is kept).
+const CONTENT_VERSION_KEY = 'iys_content_version';
+const CONTENT_VERSION = '2026-10-real-photos';
+const contentIsCurrent = (() => {
+  try { return localStorage.getItem(CONTENT_VERSION_KEY) === CONTENT_VERSION; } catch { return false; }
+})();
+
 // Initial Seed Data - Deeply authentic, scholarly content
 const initialPrograms: Program[] = [
   {
@@ -98,12 +128,8 @@ Includes comprehensive preparation and all registration/examination fees for:
 4. YCB Level 2 – Yoga Wellness Instructor Course (400 hrs TTC)
 
 Guided by Devika Bhide (YCB Level 4 Yoga Master, YCB Level 7 Yoga Consultant, MA in Yogashastra) and Shweta Vaikunthe (YCB Level 4 Yoga Master, YCB Level 7 Yoga Consultant, MA in Yogashastra).`,
-    image: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=1200&auto=format&fit=crop',
-    gallery: [
-      'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600',
-      'https://images.unsplash.com/photo-1552196563-55cd4e45efb3?q=80&w=600',
-      'https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=600'
-    ],
+    image: PHOTOS.pragati,
+    gallery: [PHOTOS.team, PHOTOS.yogaTherapistCert, PHOTOS.brigadier],
     pdfBrochure: '',
     pdfBrochureName: 'yoga_teacher_education_program_prospectus.pdf',
     registrationLink: '#register',
@@ -132,11 +158,8 @@ Guided by Devika Bhide (YCB Level 4 Yoga Master, YCB Level 7 Yoga Consultant, MA
     duration: '3 Months (Weekend Batches)',
     fees: '₹15,000 / $250',
     description: 'This government-certified course is regulated by the Yoga Certification Board (YCB) under the Ministry of Ayush. It is designed to impart foundational scriptural knowledge, traditional yoga practices, and basic instructional skills, preparing you to lead yoga protocols in schools, community centers, and corporate spaces.',
-    image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=1200&auto=format&fit=crop',
-    gallery: [
-      'https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=600',
-      'https://images.unsplash.com/photo-1599447421416-3414500d18a5?q=80&w=600'
-    ],
+    image: PHOTOS.team,
+    gallery: [PHOTOS.inauguration, PHOTOS.setubandha],
     pdfBrochure: '',
     pdfBrochureName: 'ycb_level1_prospectus.pdf',
     registrationLink: '#register',
@@ -165,11 +188,8 @@ Guided by Devika Bhide (YCB Level 4 Yoga Master, YCB Level 7 Yoga Consultant, MA
     duration: '6 Months (Hybrid)',
     fees: '₹32,000 / $490',
     description: 'An advanced, highly prestigious program suited for serious seekers, educators, and experienced practitioners. Gain deep philosophical grounding in Bhagavad Gita, Upanishads, and Samkhya philosophy while mastering the physical sciences of Hatha and Therapeutic Yoga. Certified as a Master Teacher capable of training others.',
-    image: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=1200&auto=format&fit=crop',
-    gallery: [
-      'https://images.unsplash.com/photo-1552196563-55cd4e45efb3?q=80&w=600',
-      'https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=600'
-    ],
+    image: PHOTOS.yogRatna1,
+    gallery: [PHOTOS.yogaTherapistCert, PHOTOS.wellnessHero],
     pdfBrochure: '',
     pdfBrochureName: 'ycb_level3_syllabus.pdf',
     registrationLink: '#register',
@@ -194,11 +214,8 @@ Guided by Devika Bhide (YCB Level 4 Yoga Master, YCB Level 7 Yoga Consultant, MA
     duration: '5 Days Immersive',
     fees: '₹18,000 (Inclusive of Sattvik Stay)',
     description: 'Join Devika and Shweta on the serene ghats of the holy Narmada River in Maheshwar. This intensive offline retreat focuses on Swara Sadhana, traditional pranayama, mantra japa, and scriptural contemplation. Unplug from digital chaos and live the simplicity of a classical gurukul.',
-    image: 'https://images.unsplash.com/photo-1447452001602-7090c7ab2db3?q=80&w=1200&auto=format&fit=crop',
-    gallery: [
-      'https://images.unsplash.com/photo-1545205597-3d9d02c29597?q=80&w=600',
-      'https://images.unsplash.com/photo-1512438248247-f0f2a5a8b7f0?q=80&w=600'
-    ],
+    image: PHOTOS.showcasing,
+    gallery: [PHOTOS.gomukhasan],
     pdfBrochure: '',
     pdfBrochureName: 'maheshwar_retreat_itinerary.pdf',
     registrationLink: '#register',
@@ -224,10 +241,8 @@ Guided by Devika Bhide (YCB Level 4 Yoga Master, YCB Level 7 Yoga Consultant, MA
     duration: 'Ongoing Daily Batches',
     fees: '₹4,500 / Month',
     description: 'A deeply sacred program for expectant mothers. Merging the ancient science of Garbha Sanskar (womb education) with safe, anatomical Hatha yoga postures, pranayama, and sound vibrations. Designed to foster emotional stability, pelvic strength, and a peaceful environment for the unborn consciousness.',
-    image: 'https://images.unsplash.com/photo-1575052814086-f385e2e2ad1b?q=80&w=1200&auto=format&fit=crop',
-    gallery: [
-      'https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=600'
-    ],
+    image: PHOTOS.gomukhasan,
+    gallery: [],
     pdfBrochure: '',
     pdfBrochureName: 'garbha_sanskar_brochure.pdf',
     registrationLink: '#register',
@@ -252,8 +267,8 @@ Guided by Devika Bhide (YCB Level 4 Yoga Master, YCB Level 7 Yoga Consultant, MA
     duration: 'Personalized 12-Session Package',
     fees: '₹9,500 / Course',
     description: 'Clinical-grade yoga therapy designed for managing chronic psychosomatic ailments such as hypertension, diabetes, sciatica, lumbar/cervical spondylosis, anxiety, and endocrine imbalances. Led by YCB Level 7 Certified Therapeutic Yoga Instructors, combining clinical understanding with classical hatha interventions.',
-    image: 'https://images.unsplash.com/photo-1599447421416-3414500d18a5?q=80&w=1200&auto=format&fit=crop',
-    gallery: [],
+    image: PHOTOS.setubandha,
+    gallery: [PHOTOS.yogaTherapistCert],
     pdfBrochure: '',
     pdfBrochureName: 'yoga_therapy_overview.pdf',
     registrationLink: '#register',
@@ -307,7 +322,7 @@ Instead of using yoga as a workout, spending 12 minutes in silent, focused, stru
     category: 'Science of Yoga',
     author: 'Devika Bhide',
     date: '2026-06-15',
-    image: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=600',
+    image: PHOTOS.showcasing,
     readTime: '6 min read'
   },
   {
@@ -345,7 +360,7 @@ Forcefully trying to stop a thought is like trying to flatten waves on a lake us
     category: 'Yoga Philosophy',
     author: 'Shweta Vaikunthe',
     date: '2026-07-02',
-    image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600',
+    image: PHOTOS.gomukhasan,
     readTime: '8 min read'
   },
   {
@@ -373,20 +388,26 @@ As we move into humid or wet seasons:
     category: 'Ayurveda',
     author: 'Devika Bhide',
     date: '2026-07-18',
-    image: 'https://images.unsplash.com/photo-1512438248247-f0f2a5a8b7f0?q=80&w=600',
+    image: PHOTOS.team,
     readTime: '5 min read'
   }
 ];
 
 const initialGallery: GalleryItem[] = [
-  { id: 'gal-1', url: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=800', caption: 'Classical Asana Alignments in Morning Sessions', category: 'Classes' },
-  { id: 'gal-2', url: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=800', caption: 'Pranayama Circle during our Monsoon Maheshwar Retreat', category: 'Retreats' },
-  { id: 'gal-3', url: 'https://images.unsplash.com/photo-1552196563-55cd4e45efb3?q=80&w=800', caption: 'YCB Level 3 Practical Assessments under external evaluators', category: 'Teacher Training' },
-  { id: 'gal-4', url: 'https://images.unsplash.com/photo-1599447421416-3414500d18a5?q=80&w=800', caption: 'Therapeutic Yoga workshop with pelvic alignment models', category: 'Workshops' },
-  { id: 'gal-5', url: 'https://images.unsplash.com/photo-1512438248247-f0f2a5a8b7f0?q=80&w=800', caption: 'Vedic Garbha Sanskar counseling seminar', category: 'Events' },
-  { id: 'gal-6', url: 'https://images.unsplash.com/photo-1545205597-3d9d02c29597?q=80&w=800', caption: 'National Yoga Sanskriti Award presented to Ishwari founders', category: 'Awards' },
-  { id: 'gal-7', url: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=800', caption: 'Breath control exploration in Shatkarma session', category: 'Classes' },
-  { id: 'gal-8', url: 'https://images.unsplash.com/photo-1447452001602-7090c7ab2db3?q=80&w=800', caption: 'Devika Bhide leading scriptural chanting by the river', category: 'Retreats' }
+  { id: 'gal-1',  url: PHOTOS.pragati,           caption: 'Exercise Pragati Umroi Meghalaya 2026 - Multi Military Exercise by Indian Army', category: 'Events' },
+  { id: 'gal-2',  url: PHOTOS.armyEastern,       caption: 'Indian Army Eastern Command for Teaching Yoga to Soldiers of 13 Countries of the Indian Ocean Region', category: 'Events' },
+  { id: 'gal-3',  url: PHOTOS.brigadier,         caption: 'With Brigadier Mayur Shekatkar Sir - Indian Army Eastern Command for Teaching Yoga to Soldiers of 13 Countries of the Indian Ocean Region', category: 'Events' },
+  { id: 'gal-4',  url: PHOTOS.yogRatna1,         caption: 'Receiving Yog Ratna Award from Ministry of Ayush (1)', category: 'Awards' },
+  { id: 'gal-5',  url: PHOTOS.yogRatna2,         caption: 'Receiving Yog Ratna Award from Ministry of Ayush (2)', category: 'Awards' },
+  { id: 'gal-6',  url: PHOTOS.yogRatna3,         caption: 'Receiving Yog Ratna Award from Ministry of Ayush (3)', category: 'Awards' },
+  { id: 'gal-7',  url: PHOTOS.wellnessHero,      caption: 'Wellness Hero Award by Pune Times Mirror', category: 'Awards' },
+  { id: 'gal-8',  url: PHOTOS.unionMinister,     caption: 'With Union Ayush Minister Shri Pratap Rao Jadhav', category: 'Events' },
+  { id: 'gal-9',  url: PHOTOS.inauguration,      caption: 'Inauguration of Breathing Point by Dr. Vishwas Mandlik Guruji', category: 'Events' },
+  { id: 'gal-10', url: PHOTOS.team,              caption: 'Team Breathing Point with Dr. Vishwas Mandlik Guruji', category: 'Events' },
+  { id: 'gal-11', url: PHOTOS.yogaTherapistCert, caption: 'Presenting Yoga Therapist Certificate from Dr. Vishwas Mandlik Guruji', category: 'Teacher Training' },
+  { id: 'gal-12', url: PHOTOS.setubandha,        caption: 'Sethubadhasan', category: 'Classes' },
+  { id: 'gal-13', url: PHOTOS.gomukhasan,        caption: 'Gomukhasan', category: 'Classes' },
+  { id: 'gal-14', url: PHOTOS.showcasing,        caption: 'Showcasing Yoga Practices', category: 'Classes' }
 ];
 
 const initialTestimonials: Testimonial[] = [
@@ -407,7 +428,14 @@ export const YogaProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const deleted: string[] = deletedStr ? JSON.parse(deletedStr) : [];
 
     if (saved) {
-      const parsed = (JSON.parse(saved) as Program[]).filter(p => !deleted.includes(p.id));
+      let parsed = (JSON.parse(saved) as Program[]).filter(p => !deleted.includes(p.id));
+      if (!contentIsCurrent) {
+        // Swap old stock/AI images on seed programs for the real photos; keep any other edits
+        parsed = parsed.map(p => {
+          const seed = initialPrograms.find(s => s.id === p.id);
+          return seed ? { ...p, image: seed.image, gallery: seed.gallery } : p;
+        });
+      }
       // Make sure the new program is present, unless it was explicitly deleted
       if (!deleted.includes('prog-ycb-education') && !parsed.some(p => p.id === 'prog-ycb-education')) {
         const newProgram = initialPrograms.find(p => p.id === 'prog-ycb-education');
@@ -427,12 +455,22 @@ export const YogaProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const [blogs, setBlogs] = useState<Blog[]>(() => {
     const saved = localStorage.getItem('iys_blogs');
-    return saved ? JSON.parse(saved) : initialBlogs;
+    if (!saved) return initialBlogs;
+    const parsed = JSON.parse(saved) as Blog[];
+    if (contentIsCurrent) return parsed;
+    return parsed.map(b => {
+      const seed = initialBlogs.find(s => s.id === b.id);
+      return seed ? { ...b, image: seed.image } : b;
+    });
   });
 
   const [galleryItems, setGalleryItems] = useState<GalleryItem[]>(() => {
     const saved = localStorage.getItem('iys_gallery');
-    return saved ? JSON.parse(saved) : initialGallery;
+    if (!saved) return initialGallery;
+    const parsed = JSON.parse(saved) as GalleryItem[];
+    if (contentIsCurrent) return parsed;
+    // Drop the old stock/AI seed photos, keep anything that was added manually
+    return [...initialGallery, ...parsed.filter(g => !g.url.includes('images.unsplash.com'))];
   });
 
   const [testimonials, setTestimonials] = useState<Testimonial[]>(() => {
@@ -491,6 +529,11 @@ export const YogaProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const closeEnrollmentModal = () => {
     setActiveEnrollmentProgram(null);
   };
+
+  // Remember which seed-content version this browser now has
+  useEffect(() => {
+    try { localStorage.setItem(CONTENT_VERSION_KEY, CONTENT_VERSION); } catch { /* ignore */ }
+  }, []);
 
   // Sync to localstorage
   useEffect(() => {
