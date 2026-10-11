@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { ArrowRight, Award, BookOpen, Calendar, Compass, Heart, Users, CheckCircle2 } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { ArrowRight, Award, BookOpen, Calendar, Compass, GraduationCap, Heart, ShieldCheck, Users, CheckCircle2 } from 'lucide-react';
 import { useYoga } from '../context/YogaContext';
 import { BananaLeaf, BotanicalBorder, DevanagariScript, LotusFlower, PeepalLeaf } from './BotanicalAssets';
 
@@ -8,6 +8,33 @@ interface HomeViewProps {
   onNavigateDetail: (view: [string, string]) => void;
   initialSection?: string;
 }
+
+// Founder portraits: put the real photos in public/images/founders/ using these names.
+// Until a file exists, a neutral lotus placeholder is shown (never a stock photo).
+const FOUNDER_PHOTOS = {
+  devika: '/images/founders/devika-bhide.jpeg',
+  shweta: '/images/founders/shweta-vaikunthe.jpeg',
+};
+
+const FounderPhoto: React.FC<{ src: string; name: string }> = ({ src, name }) => {
+  const [failed, setFailed] = useState(false);
+  if (failed) {
+    return (
+      <div className="flex h-full w-full flex-col items-center justify-center gap-3 rounded bg-warm-beige/30 text-olive-green">
+        <LotusFlower size={56} />
+        <span className="font-cinzel text-sm text-espresso/70">{name}</span>
+      </div>
+    );
+  }
+  return (
+    <img
+      src={src}
+      alt={name}
+      onError={() => setFailed(true)}
+      className="h-full w-full rounded object-cover object-top"
+    />
+  );
+};
 
 export const HomeView: React.FC<HomeViewProps> = ({ setCurrentPage, onNavigateDetail, initialSection }) => {
   const { programs, blogs, testimonials, currentStudent } = useYoga();
@@ -81,6 +108,121 @@ export const HomeView: React.FC<HomeViewProps> = ({ setCurrentPage, onNavigateDe
           <DevanagariScript />
         </div>
       </section>
+
+      {/* --- Section 3: The Custodians of Tradition (Founders & Faculty) --- */}
+      <section id="founders-section" className="py-24 px-4 sm:px-6 lg:px-8 bg-[#FAFAF8] border-t border-b border-biscuit/20 relative">
+        <div className="absolute top-1/2 left-4 pointer-events-none opacity-5">
+          <BananaLeaf size={280} />
+        </div>
+        
+        <div className="max-w-6xl mx-auto space-y-16">
+          
+          <div className="text-center space-y-4">
+            <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-biscuit font-semibold">The Custodians of Tradition</span>
+            <h2 className="font-cinzel text-3xl md:text-4xl font-semibold tracking-wide text-espresso">
+              Meet the Founders
+            </h2>
+            <p className="font-sans text-sm text-espresso/60 max-w-xl mx-auto">
+              Devika Bhide and Shweta Vaikunthe founded the Institute with a vision to make classical yoga shastra accessible, rigorous, and therapeutic.
+            </p>
+            <div className="w-12 h-[1px] bg-biscuit mx-auto mt-4" />
+          </div>
+
+          {/* Detailed Biography 1: Devika Bhide */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start p-8 bg-primary-white rounded-2xl border border-biscuit/30 shadow-sm">
+            <div className="lg:col-span-4 space-y-4">
+              <div className="aspect-[3/4] rounded-lg overflow-hidden border border-biscuit/30 p-2 bg-warm-beige/10">
+                <FounderPhoto src={FOUNDER_PHOTOS.devika} name="Devika Bhide" />
+              </div>
+              <div className="text-center lg:text-left space-y-1">
+                <h3 className="font-cinzel text-xl font-bold text-espresso">Devika Bhide</h3>
+                <p className="font-sans text-xs text-olive-green tracking-wider uppercase font-semibold">Co-Founder | Yoga Educator | Yoga Master | Researcher</p>
+                <p className="font-sans text-[11px] text-espresso/60">M.A. Yogashastra • YCB Level 4 Yoga Master • YCB Level 7 Therapeutic Instructor</p>
+              </div>
+            </div>
+
+            <div className="lg:col-span-8 space-y-5 text-left">
+              <h4 className="font-cinzel text-lg font-bold text-espresso border-b border-biscuit/20 pb-2">
+                Academic, Therapeutic & Research Profile
+              </h4>
+              <p className="font-sans text-xs sm:text-sm text-espresso/80 leading-relaxed">
+                Devika Bhide is a yoga educator, researcher, and practitioner dedicated to preserving and sharing the authentic wisdom of yoga through education, practice, and lifelong learning. With a strong foundation in classical yogic studies, she believes that yoga is far more than a physical discipline—it is a timeless science that can be understood and applied meaningfully in everyday life.
+              </p>
+              <p className="font-sans text-xs sm:text-sm text-espresso/80 leading-relaxed">
+                She holds a Master's degree (M.A.) in Yogashastra, is a YCB Level 4 Yoga Master and a YCB Level 7 Therapeutic Yoga Instructor, along with a Diploma in Yoga Therapy. She also holds specialized certifications in Prenatal Yoga, Women's Health Yoga, Office Yoga, and other clinical aspects of yogic sciences.
+              </p>
+              <p className="font-sans text-xs sm:text-sm text-espresso/80 leading-relaxed">
+                Over the years, Devika has conducted yoga teacher training programs, workshops, retreats, therapeutic and prenatal yoga sessions, and has mentored numerous students through government-recognised Yoga Certification Board (YCB) courses. Her teaching style blends traditional yogic philosophy with scientific understanding.
+              </p>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                <div className="flex gap-3 items-start p-3 bg-warm-beige/20 rounded-lg border border-biscuit/20">
+                  <GraduationCap className="text-olive-green shrink-0 mt-1" size={18} />
+                  <div>
+                    <h5 className="font-cinzel text-xs font-semibold text-espresso uppercase">M.A. Yogashastra & Diploma</h5>
+                    <p className="text-[11px] text-espresso/60 mt-0.5">Deep scriptural and scholarly studies in classical yoga texts paired with clinical-grade therapeutic diploma systems.</p>
+                  </div>
+                </div>
+                <div className="flex gap-3 items-start p-3 bg-warm-beige/20 rounded-lg border border-biscuit/20">
+                  <Award className="text-olive-green shrink-0 mt-1" size={18} />
+                  <div>
+                    <h5 className="font-cinzel text-xs font-semibold text-espresso uppercase">YCB Level 4 & 7 Accreditations</h5>
+                    <p className="text-[11px] text-espresso/60 mt-0.5">Certified as both a Yoga Master and a Therapeutic Yoga Instructor under the Ministry of AYUSH, Government of India.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Detailed Biography 2: Shweta Vaikunthe */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start p-8 bg-primary-white rounded-2xl border border-biscuit/30 shadow-sm">
+            <div className="lg:col-span-4 lg:order-last space-y-4">
+              <div className="aspect-[3/4] rounded-lg overflow-hidden border border-biscuit/30 p-2 bg-warm-beige/10">
+                <FounderPhoto src={FOUNDER_PHOTOS.shweta} name="Shweta Vaikunthe" />
+              </div>
+              <div className="text-center lg:text-left space-y-1">
+                <h3 className="font-cinzel text-xl font-bold text-espresso">Shweta Vaikunthe</h3>
+                <p className="font-sans text-xs text-olive-green tracking-wider uppercase font-semibold">Co-Founder | Yoga Educator | Yoga Master | Yoga Therapist</p>
+                <p className="font-sans text-[11px] text-espresso/60">M.A. Yogashastra • Master's in Yogic Science • YCB Certified Therapist & Evaluator</p>
+              </div>
+            </div>
+
+            <div className="lg:col-span-8 space-y-5 text-left">
+              <h4 className="font-cinzel text-lg font-bold text-espresso border-b border-biscuit/20 pb-2">
+                Academic, Therapeutic & Clinical Expertise
+              </h4>
+              <p className="font-sans text-xs sm:text-sm text-espresso/80 leading-relaxed">
+                Shweta Vaikunthe is a passionate yoga educator and therapist with over 12 years of rich teaching experience, dedicated to making authentic yogic knowledge highly accessible and transformative to people from all walks of life. With a strong academic foundation and extensive clinical expertise, she believes in using yoga as a powerful tool for holistic health.
+              </p>
+              <p className="font-sans text-xs sm:text-sm text-espresso/80 leading-relaxed">
+                She holds a Master's degree in Yogashastra from Kulguru Kalidas Sanskrit University (KKSU), Nagpur, along with a Master's in Yogic Science. She is certified by the prestigious Yoga Certification Board (YCB), Ministry of AYUSH, Government of India, as a Yoga Instructor, Evaluator, Yoga Master, and Therapeutic Yoga Consultant.
+              </p>
+              <p className="font-sans text-xs sm:text-sm text-espresso/80 leading-relaxed">
+                Over her distinguished career of more than a decade, Shweta has trained thousands of students in Hatha, Ashtanga, Iyengar, Vinyasa, Medical, and Therapeutic Yoga, seamlessly combining traditional scriptural principles with a compassionate, student-centric, and practical teaching approach.
+              </p>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                <div className="flex gap-3 items-start p-3 bg-warm-beige/20 rounded-lg border border-biscuit/20">
+                  <ShieldCheck className="text-olive-green shrink-0 mt-1" size={18} />
+                  <div>
+                    <h5 className="font-cinzel text-xs font-semibold text-espresso uppercase">Dual Masters Degrees</h5>
+                    <p className="text-[11px] text-espresso/60 mt-0.5">M.A. in Yogashastra from KKSU Nagpur and Master's in Yogic Science, anchoring her teaching in deep academic rigor.</p>
+                  </div>
+                </div>
+                <div className="flex gap-3 items-start p-3 bg-warm-beige/20 rounded-lg border border-biscuit/20">
+                  <BookOpen className="text-olive-green shrink-0 mt-1" size={18} />
+                  <div>
+                    <h5 className="font-cinzel text-xs font-semibold text-espresso uppercase">AYUSH Ministry Evaluator</h5>
+                    <p className="text-[11px] text-espresso/60 mt-0.5">YCB Certified Yoga Master, Instructor, Evaluator, and Therapeutic Yoga Consultant overseeing national examinations.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
 
       <section id="programs-section" className="bg-warm-beige/40 px-4 py-24 sm:px-6 lg:px-8"><div className="mx-auto max-w-7xl space-y-12"><div className="flex items-end justify-between gap-6"><div><span className="font-mono text-[10px] font-semibold uppercase tracking-[0.24em] text-biscuit">Sadhana & Sastra Marg</span><h2 className="font-serif text-4xl font-semibold text-espresso md:text-5xl">Offered Programs</h2></div><button onClick={() => setCurrentPage('programs')} className="inline-flex items-center gap-2 font-sans text-[11px] font-semibold uppercase tracking-[0.16em] text-espresso">View All <ArrowRight size={14} /></button></div><div className="grid gap-8 md:grid-cols-3">{featuredPrograms.map((prog) => { const enrolled = currentStudent?.enrolledCourses.some((course) => course.programId === prog.id); return <div key={prog.id} onClick={() => onNavigateDetail(['program-detail', prog.id])} className="artistic-card group cursor-pointer overflow-hidden"><div className="relative aspect-[16/10] overflow-hidden"><img src={prog.image || 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=400'} alt={prog.name} referrerPolicy="no-referrer" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />{enrolled && <span className="absolute right-4 top-4 flex items-center gap-1 rounded-full bg-olive-green px-2.5 py-1 text-[10px] font-semibold text-primary-white"><CheckCircle2 size={12} /> Enrolled</span>}</div><div className="space-y-4 p-6"><h3 className="font-serif text-2xl font-semibold text-espresso">{prog.name}</h3><p className="text-xs leading-relaxed text-espresso/70">{prog.description}</p><div className="flex items-center justify-between border-t border-biscuit/15 pt-3 text-[11px] text-espresso/60"><span className="flex items-center gap-1"><Calendar size={12} />{prog.startingDate}</span><strong>{prog.fees}</strong></div></div></div>; })}</div></div></section>
 
