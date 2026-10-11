@@ -106,7 +106,7 @@ const PHOTOS = {
 // the old seed data cached in localStorage get the new images on their next visit
 // (anything added manually is kept).
 const CONTENT_VERSION_KEY = 'iys_content_version';
-const CONTENT_VERSION = '2026-10-program-posters';
+const CONTENT_VERSION = '2026-10-ttc-prep-education';
 const contentIsCurrent = (() => {
   try { return localStorage.getItem(CONTENT_VERSION_KEY) === CONTENT_VERSION; } catch { return false; }
 })();
@@ -137,7 +137,7 @@ Includes comprehensive preparation and all registration/examination fees for:
 
 Guided by Devika Bhide (YCB Level 4 Yoga Master, YCB Level 7 Yoga Consultant, MA in Yogashastra) and Shweta Vaikunthe (YCB Level 4 Yoga Master, YCB Level 7 Yoga Consultant, MA in Yogashastra).`,
     image: PROGRAM_POSTERS.teacherTraining.url,
-    gallery: [PROGRAM_POSTERS.ccyResult.url],
+    gallery: [PROGRAM_POSTERS.ttcPreparation.url],
     pdfBrochure: '',
     pdfBrochureName: 'yoga_teacher_education_program_prospectus.pdf',
     registrationLink: '#register',
@@ -196,7 +196,7 @@ Guided by Devika Bhide (YCB Level 4 Yoga Master, YCB Level 7 Yoga Consultant, MA
     duration: '6 Months (Hybrid)',
     fees: '₹32,000 / $490',
     description: 'An advanced, highly prestigious program suited for serious seekers, educators, and experienced practitioners. Gain deep philosophical grounding in Bhagavad Gita, Upanishads, and Samkhya philosophy while mastering the physical sciences of Hatha and Therapeutic Yoga. Certified as a Master Teacher capable of training others.',
-    image: PHOTOS.yogRatna1,
+    image: PROGRAM_POSTERS.ttcPreparation.url,
     gallery: [],
     pdfBrochure: '',
     pdfBrochureName: 'ycb_level3_syllabus.pdf',
