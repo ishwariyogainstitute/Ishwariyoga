@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { PROGRAM_POSTERS } from '../data/programPosters';
+import { PROGRAM_POSTERS, PROGRAM_PHOTOS } from '../data/programPosters';
 import { 
   Program, Student, Blog, GalleryItem, Testimonial, Inquiry, FAQ, ScheduleItem, ProgramTestimonial,
   StudentAccount, RecordedSession, CourseMaterial, ExamResult, CoursePurchase
@@ -106,7 +106,7 @@ const PHOTOS = {
 // the old seed data cached in localStorage get the new images on their next visit
 // (anything added manually is kept).
 const CONTENT_VERSION_KEY = 'iys_content_version';
-const CONTENT_VERSION = '2026-10-ttc-prep-education';
+const CONTENT_VERSION = '2026-10-retreat-photo';
 const contentIsCurrent = (() => {
   try { return localStorage.getItem(CONTENT_VERSION_KEY) === CONTENT_VERSION; } catch { return false; }
 })();
@@ -222,7 +222,7 @@ Guided by Devika Bhide (YCB Level 4 Yoga Master, YCB Level 7 Yoga Consultant, MA
     duration: '5 Days Immersive',
     fees: '₹18,000 (Inclusive of Sattvik Stay)',
     description: 'Join Devika and Shweta on the serene ghats of the holy Narmada River in Maheshwar. This intensive offline retreat focuses on Swara Sadhana, traditional pranayama, mantra japa, and scriptural contemplation. Unplug from digital chaos and live the simplicity of a classical gurukul.',
-    image: PHOTOS.showcasing,
+    image: PROGRAM_PHOTOS.retreat,
     gallery: [],
     pdfBrochure: '',
     pdfBrochureName: 'maheshwar_retreat_itinerary.pdf',
