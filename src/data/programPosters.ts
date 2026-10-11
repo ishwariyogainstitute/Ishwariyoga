@@ -38,6 +38,11 @@ export const PROGRAM_POSTERS = {
   },
 } satisfies Record<string, ProgramPoster>;
 
+/** Plain program photos (no caption block on the program page). Files live in public/images/programs/. */
+export const PROGRAM_PHOTOS = {
+  retreat: `${base}Yogaretreat.jpeg`,
+};
+
 /** Look up a poster (and its description) from an image URL; undefined for ordinary photos. */
 export const findPoster = (url?: string): ProgramPoster | undefined =>
   Object.values(PROGRAM_POSTERS).find(p => p.url === url);
