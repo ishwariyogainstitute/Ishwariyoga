@@ -632,13 +632,16 @@ Email: Devikabhide8@gmail.com | Pune, Maharashtra, India`;
             return (
               <figure className="space-y-3">
                 <div className="rounded-xl overflow-hidden border border-biscuit/30 bg-warm-beige/15 shadow-sm flex justify-center p-3 sm:p-4">
-                  <img
-                    src={program.image}
-                    alt={poster?.alt ?? program.name}
-                    referrerPolicy="no-referrer"
-                    className="w-full max-w-xl max-h-[85vh] object-contain rounded-lg"
-                  />
+                  <a href={program.image} target="_blank" rel="noopener noreferrer" title="Open full size" className="block w-full max-w-2xl">
+                    <img
+                      src={program.image}
+                      alt={poster?.alt ?? program.name}
+                      referrerPolicy="no-referrer"
+                      className="w-full max-h-[90vh] object-contain rounded-lg"
+                    />
+                  </a>
                 </div>
+                {poster && <p className="font-sans text-[10px] uppercase tracking-wider text-espresso/40">Tap the poster to view full size</p>}
                 {poster && (
                   <figcaption className="font-sans text-xs text-espresso/70 leading-relaxed">
                     <span className="font-semibold text-espresso">{poster.title}: </span>
