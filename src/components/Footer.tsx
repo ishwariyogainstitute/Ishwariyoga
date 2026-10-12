@@ -43,6 +43,7 @@ export const Footer: React.FC<FooterProps> = ({ setCurrentPage }) => {
             <a href="https://youtube.com/@ishwariyoga" target="_blank" rel="noopener noreferrer" aria-label="YouTube Channel" className="flex h-10 w-10 items-center justify-center rounded-full border border-[#687454]/20 bg-[#fffaf4] text-[#50362a] shadow-sm transition-all hover:border-[#687454] hover:text-[#687454]"><Youtube size={16} /></a>
             <a href="https://instagram.com/ishwariyogainstitute.iyi" target="_blank" rel="noopener noreferrer" aria-label="Instagram Profile" className="flex h-10 w-10 items-center justify-center rounded-full border border-[#687454]/20 bg-[#fffaf4] text-[#50362a] shadow-sm transition-all hover:border-[#687454] hover:text-[#687454]"><Instagram size={16} /></a>
             <a href="https://wa.me/918208368237" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Contact" className="flex h-10 w-10 items-center justify-center rounded-full border border-[#687454]/20 bg-[#fffaf4] text-[#50362a] shadow-sm transition-all hover:border-[#687454] hover:text-[#687454]"><MessageCircle size={16} /></a>
+            <a href="https://wa.me/919607517375" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Contact" className="flex h-10 w-10 items-center justify-center rounded-full border border-[#687454]/20 bg-[#fffaf4] text-[#50362a] shadow-sm transition-all hover:border-[#687454] hover:text-[#687454]"><MessageCircle size={16} /></a>
           </div>
         </div>
 
